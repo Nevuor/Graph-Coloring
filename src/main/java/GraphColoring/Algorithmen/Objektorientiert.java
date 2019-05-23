@@ -46,7 +46,7 @@ public class Objektorientiert {
 
         for (int Knoten2 = 0; Knoten2 < graph.getAnzahlKnoten(); Knoten2++){
             //Hier wird überprüft, ob zwei Knoten Nachbarn sind, und wenn ja ob Sie auch die gleiche Farbe haben
-            if (graph.sindVerbunden(Knoten1, Knoten2) && Farbvorschlag == Farben[Knoten2]){
+            if (graph.sindVerbunden(Knoten1, Knoten2) == 1 && Farbvorschlag == Farben[Knoten2]){
                 //Falls Sie die gleiche Farbe haben ist dies ein Problem  und es muss in der Util nach einen neuen Farbe gesucht werden
                 return false;
             }

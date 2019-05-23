@@ -3,17 +3,17 @@ package GraphColoring;
 public class Graph {
 
     int AnzahlKnoten;
-    boolean[][] Verbindungen;
+    int[][] Verbindungen;
 
     public Graph(int AnzahlKnoten) {
         this.AnzahlKnoten = AnzahlKnoten;
-        Verbindungen = new boolean[AnzahlKnoten][AnzahlKnoten];
+        Verbindungen = new int[AnzahlKnoten][AnzahlKnoten];
     }
 
     public void VerbindungenHinzufügen(int Knoten1, int Knoten2){
 
-        Verbindungen[Knoten1][Knoten2] = true;
-        Verbindungen[Knoten2][Knoten1] = true;
+        Verbindungen[Knoten1][Knoten2] = 1;
+        Verbindungen[Knoten2][Knoten1] = 1;
     }
 
     public int getAnzahlKnoten() {
@@ -21,12 +21,12 @@ public class Graph {
         return AnzahlKnoten;
     }
 
-    public boolean sindVerbunden(int Knoten1, int Knoten2){
+    public int sindVerbunden(int Knoten1, int Knoten2){
 
         return Verbindungen[Knoten1][Knoten2];
     }
 
-    public boolean[][] getGraphArray() {
+    public int[][] getGraphArray() {
         return Verbindungen;
     }
 
