@@ -5,14 +5,12 @@ import GraphColoring.Main;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Random;
 
 public class Startfenster extends JFrame{
 
     private static int AnzahlKnoten;
-    public static int Zufallszahl;
+    private static int Zufallszahl;
 
     public Startfenster(){
 
@@ -53,26 +51,22 @@ public class Startfenster extends JFrame{
 
         //ActionListener
         //Erstellung von "zufälligen" Zahlen
-        zufaellig.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                Random random = new Random();
-                Zufallszahl = random.nextInt(21);
-                Knoten.setValue(Zufallszahl);
-            }
+        zufaellig.addActionListener(e -> {
+            Random random = new Random();
+            Zufallszahl = random.nextInt(21);
+            Knoten.setValue(Zufallszahl);
         });
 
         //Überleitung auf da nächste Fenster
-        erzeugen.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                AnzahlKnoten = (Integer)Knoten.getValue();
-                Hauptfenster hauptfenster = new Hauptfenster();
-                hauptfenster.setVisible(true);
-                Main.startfenster.dispose();
-            }
+        erzeugen.addActionListener(e -> {
+            AnzahlKnoten = (Integer)Knoten.getValue();
+            Hauptfenster hauptfenster = new Hauptfenster();
+            hauptfenster.setVisible(true);
+            Main.startfenster.dispose();
         });
     }
 
-    public static int getAnzahlKnoten(){
+    static int getAnzahlKnoten(){
 
         return AnzahlKnoten;
     }

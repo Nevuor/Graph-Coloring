@@ -12,7 +12,7 @@ public class Algorithmus {
 
         if (funktional == false){
 
-            Farben = Objektorientiert.Färben(graph, AnzahlKnoten);
+            Farben = Objektorientiert.Faerben(graph, AnzahlKnoten);
 
         }else {
 

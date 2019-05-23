@@ -165,7 +165,7 @@ public class Hauptfenster extends JFrame {
 
                 Färbungsmöglichkeit Färbungsmöglichkeit = new Färbungsmöglichkeit();
                 Objektorientiert ObjektorientierteFärbung = new Objektorientiert();
-                Färbungsmöglichkeit.Knotenfarben = ObjektorientierteFärbung.Färben(graph, AnzahlKnoten);
+                Färbungsmöglichkeit.Knotenfarben = ObjektorientierteFärbung.Faerben(graph, AnzahlKnoten);
                 System.out.println(Arrays.toString(Färbungsmöglichkeit.Knotenfarben));
 
 
