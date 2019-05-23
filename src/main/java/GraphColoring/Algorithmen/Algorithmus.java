@@ -4,6 +4,8 @@ import GraphColoring.Graph;
 
 import java.util.Arrays;
 
+import javax.swing.JOptionPane;
+
 public class Algorithmus {
 
     public static void Berechnen(boolean funktional, Graph graph, int AnzahlKnoten){
@@ -15,9 +17,7 @@ public class Algorithmus {
             Farben = Objektorientiert.Faerben(graph, AnzahlKnoten);
 
         }else {
-
-            Farben = Funktional.Faerben(graph, AnzahlKnoten);
-
+        	  Farben = Funktional.Faerben(graph, AnzahlKnoten);
         }
         //Farbe der Knoten wird ausgegeben
         for (int Knoten = 0; Knoten < AnzahlKnoten; Knoten++){
@@ -44,26 +44,5 @@ public class Algorithmus {
         //Anzahl der Farben zurückgegeben
         return Anzahl;
     }
-/*
-    public static void main(String[] args) {
-
-        int AnzahlKnoten = 5;
-
-        Graph graph = new Graph(AnzahlKnoten);
-
-        graph.VerbindungenHinzufügen(0, 1);
-        graph.VerbindungenHinzufügen(0, 2);
-        graph.VerbindungenHinzufügen(1, 2);
-        graph.VerbindungenHinzufügen(1, 3);
-        graph.VerbindungenHinzufügen(2, 3);
-        graph.VerbindungenHinzufügen(3, 4);
-        graph.VerbindungenHinzufügen(0, 3);
-        graph.VerbindungenHinzufügen(0, 4);
-
-        Berechnen(false, graph, AnzahlKnoten);
-
-    }
-
- */
 
 }

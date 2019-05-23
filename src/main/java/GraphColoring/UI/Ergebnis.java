@@ -7,6 +7,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import java.awt.*;
+import java.util.Arrays;
 
 public class Ergebnis extends JFrame {
 
@@ -16,6 +17,8 @@ public class Ergebnis extends JFrame {
 	private JTable TabelleWest;
 	private Object[][] ErgebnisArray;
 	private int AnzahlKnoten = Startfenster.getAnzahlKnoten();
+	private JPanel panel;
+	private JLabel AnzahlFarben;
 
 
 	public Ergebnis(final Object[][] ObjectArray, int[] knotenfarben) {
@@ -104,6 +107,19 @@ public class Ergebnis extends JFrame {
 		contentPane.add(Ergebnistabelle, BorderLayout.CENTER);
 		contentPane.add(TabelleNorth, BorderLayout.NORTH);
 		contentPane.add(TabelleWest, BorderLayout.WEST);
+		
+		panel = new JPanel();
+		contentPane.add(panel, BorderLayout.EAST);
+		System.out.println(Arrays.toString(knotenfarben));
+		
+		 int groessteZahlImArray = 1;
+		    for (int i = 0; i < knotenfarben.length; i++) {
+		        if (knotenfarben[i] > groessteZahlImArray) {
+		        	groessteZahlImArray = knotenfarben[i];
+		        }
+		    }
+		AnzahlFarben = new JLabel("Anzahl genutzer Farben:" + groessteZahlImArray);
+		contentPane.add(AnzahlFarben, BorderLayout.SOUTH);
 		
 		pack();
 	}

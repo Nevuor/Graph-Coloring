@@ -12,19 +12,38 @@ import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
 import java.util.Arrays;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import javax.swing.table.TableModel;
+
 import java.awt.FlowLayout;
 import javax.swing.border.LineBorder;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+
 import java.awt.Color;
 
-public class Hauptfenster extends JFrame {
+public class Hauptfenster extends JFrame implements TableModelListener{
 
     private JTable table;
     private int AnzahlKnoten = Startfenster.getAnzahlKnoten();
     private Graph graph = new Graph(AnzahlKnoten);
+    
+    public void tableChanged(TableModelEvent e) {
+        int row = e.getFirstRow();
+        int column = e.getColumn();
+        TableModel model = (TableModel)e.getSource();
+        String columnName = model.getColumnName(column);
+        Object data = model.getValueAt(row, column);
+
+       if(model.getValueAt(row, column) != model.getValueAt(column, row)) {
+       model.setValueAt(model.getValueAt(row, column), column, row);
+       }
+       
+    }
 
     public Hauptfenster() {
 
@@ -40,9 +59,7 @@ public class Hauptfenster extends JFrame {
 
         JPanel mainPanel = new JPanel();
         JPanel Ergebnis = new JPanel();
-        JPanel Farben = new JPanel();
         JPanel Zwischehalter1 = new JPanel();
-        JPanel Zwischehalter2 = new JPanel();
         JPanel TabellenPanel = new JPanel();
 
         //Pane
@@ -57,6 +74,13 @@ public class Hauptfenster extends JFrame {
 
                     table = new JTable(tableModel);
                 TabellenPanel.add(table, BorderLayout.CENTER);
+                table.getModel().addTableModelListener(this);
+                
+                for (int i = 0; i < AnzahlKnoten; i++) {
+        			for(int a = 0; a < AnzahlKnoten; a++) {
+        				if(i == a) table.setValueAt("1", i, a);			
+        			}
+        		}
 
                     DefaultTableModel tableModelWest = new DefaultTableModel(AnzahlKnoten, 1);
                     JTable tableWest = new JTable(tableModelWest);
@@ -85,7 +109,7 @@ public class Hauptfenster extends JFrame {
 
         //ErgebnisPanel
         mainPanel.add(Ergebnis);
-            Ergebnis.setLayout(new GridLayout(5, 0, 0, 0));
+            Ergebnis.setLayout(new GridLayout(3, 0, 0, 0));
 
                 JButton BerechneObjektorientiert = new JButton("Objektorientiert berechnen");
             Ergebnis.add(BerechneObjektorientiert);
@@ -95,20 +119,13 @@ public class Hauptfenster extends JFrame {
                 JButton BerechneFunktional = new JButton("Funktional berechnen");
             Ergebnis.add(BerechneFunktional);
 
-            Ergebnis.add(Zwischehalter2);
-
-                JLabel genutzteFarben = new JLabel("genutzte Farben:");
-                Farben.add(genutzteFarben);
-                JLabel lblNewLabel = new JLabel("-"); //TODO Anzahl Farben nach Berechnung anzeigen lassen
-                Farben.add(lblNewLabel);
-            Ergebnis.add(Farben);
-
         //ActionListener Objektorientiert
         BerechneObjektorientiert.addActionListener(arg0 -> berechne(true, table, tableModel));
 
         //ActionListener Funktional
         BerechneFunktional.addActionListener(arg0 -> berechne(false, table, tableModel));
-
+        BerechneFunktional.addActionListener(arg0 -> JOptionPane.showMessageDialog(null, "Achtung! Die funktionale Färbung ist nur mit einem planaren Graphen möglich. Es existiert keine Prüfung des von Ihnen eingegebenen Grpahen auf planarität. Weitere Informationen: de.wikipedia.org/wiki/Planarer_Graph ", "Achtung", JOptionPane.INFORMATION_MESSAGE));
+        
         pack();
     }
 
@@ -125,13 +142,11 @@ public class Hauptfenster extends JFrame {
                 Graph.getGraphObjectArray()[i][j] = dtm.getValueAt(i, j);
             }
         }
-        System.out.println(Arrays.deepToString(Graph.getGraphObjectArray()));
     }
 
     private void berechne(boolean objektorientiert, JTable table, DefaultTableModel defaultTableModel){
 
-        table.setEnabled(false); //TODO
-
+        table.setEnabled(false);
         generateGraph(defaultTableModel);
 
         // FÃ¤rbung
@@ -141,15 +156,10 @@ public class Hauptfenster extends JFrame {
         }else {
             faerbungsmoeglichkeit.Knotenfarben = Funktional.Faerben(graph, AnzahlKnoten);
         }
-        System.out.println(Arrays.toString(faerbungsmoeglichkeit.Knotenfarben));
+        
+        Ergebnis frame = new Ergebnis(Graph.getGraphObjectArray(), faerbungsmoeglichkeit.Knotenfarben);
+        frame.setVisible(true);
 
-        //TODO Eigentlich nicht Notwendig?? da wir keine Exeption schmeiÃŸen, bzw weiterleiten...
-        try {
-            Ergebnis frame = new Ergebnis(Graph.getGraphObjectArray(), faerbungsmoeglichkeit.Knotenfarben);
-            frame.setVisible(true);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
     }
 }

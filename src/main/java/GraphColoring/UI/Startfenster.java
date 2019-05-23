@@ -4,7 +4,11 @@ import GraphColoring.Main;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.NumberFormatter;
+
 import java.awt.*;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.Random;
 
 public class Startfenster extends JFrame{
@@ -32,16 +36,21 @@ public class Startfenster extends JFrame{
         //Befüllung Pane
         pane.add(north, BorderLayout.NORTH);
         //Befüllung north
-        JLabel Text = new JLabel("Wählen Sie die Anzahl der AnzahlKnoten des Graphen");
+        JLabel Text = new JLabel("W\u00e4hlen Sie die Anzahl der Knoten des Graphen");
         north.add(Text);
 
         pane.add(center, BorderLayout.CENTER);
         //Befüllung center
-        final JSpinner Knoten = new JSpinner(Anzahl);
-        center.add(Knoten);
+        NumberFormat nmf = new DecimalFormat("000");
+        NumberFormatter nf = new NumberFormatter(nmf);
+        nf.setAllowsInvalid(false);
+        nf.setOverwriteMode(true);
+        JFormattedTextField KnotenAnzahlFeld = new JFormattedTextField(nf);
+        KnotenAnzahlFeld.setColumns(3);
+        center.add(KnotenAnzahlFeld);
         JLabel oder = new JLabel("oder");
         center.add(oder);
-        JButton zufaellig = new JButton("zufällig");
+        JButton zufaellig = new JButton("zuf\u00e4llig");
         center.add(zufaellig);
 
         pane.add(south, BorderLayout.SOUTH);
@@ -53,16 +62,20 @@ public class Startfenster extends JFrame{
         //Erstellung von "zufälligen" Zahlen
         zufaellig.addActionListener(e -> {
             Random random = new Random();
-            Zufallszahl = random.nextInt(21);
-            Knoten.setValue(Zufallszahl);
+            Zufallszahl = random.nextInt(20)+4;
+            KnotenAnzahlFeld.setValue(Zufallszahl);
         });
 
         //Überleitung auf da nächste Fenster
         erzeugen.addActionListener(e -> {
-            AnzahlKnoten = (Integer)Knoten.getValue();
+        	AnzahlKnoten = ((Number) KnotenAnzahlFeld.getValue()).intValue();
+            if (AnzahlKnoten < 4) {
+            	JOptionPane.showMessageDialog(null, "Mit einem Grafen, der nur " + AnzahlKnoten + " Knoten hat macht das ganze doch gar keinen Spa�! ", "Achtung", JOptionPane.INFORMATION_MESSAGE);
+            }else {
             Hauptfenster hauptfenster = new Hauptfenster();
             hauptfenster.setVisible(true);
             Main.startfenster.dispose();
+            }
         });
     }
 
