@@ -30,7 +30,7 @@ public class Algorithmus {
     }
 
     //Auswertung der Anzahl der unterschiedliche Farben im Farben-Array
-    public static int AnzahlFarben(int Farben[]){
+    private static int AnzahlFarben(int Farben[]){
 
         int Anzahl = 1;
         //Hier wird der Array sortiert

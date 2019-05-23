@@ -2,8 +2,8 @@ package GraphColoring;
 
 public class Graph {
 
-    int AnzahlKnoten;
-    int[][] Verbindungen;
+    private int AnzahlKnoten;
+    private int[][] Verbindungen;
 
     public Graph(int AnzahlKnoten) {
         this.AnzahlKnoten = AnzahlKnoten;

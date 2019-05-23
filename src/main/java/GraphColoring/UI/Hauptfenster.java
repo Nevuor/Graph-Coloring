@@ -123,7 +123,7 @@ public class Hauptfenster extends JFrame {
                         //Graph.getGraphArray()[i][j] = dtm.getValueAt(i,j);
 
 
-                System.out.println(Arrays.deepToString(Graph.getGraphArray()));
+                        System.out.println(Arrays.deepToString(Graph.getGraphArray()));
                 //System.out.println(Array[0][0]);
             }
 

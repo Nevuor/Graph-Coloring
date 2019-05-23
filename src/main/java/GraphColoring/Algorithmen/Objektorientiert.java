@@ -14,7 +14,7 @@ public class Objektorientiert {
         return Farben;
     }
 
-    public static boolean FärbungsUtil(Graph graph, int Farben[], int Knoten){
+    private static boolean FärbungsUtil(Graph graph, int Farben[], int Knoten){
 
         //Falls man am Ende des Graphen angekommen ist, hat man alle Knoten gefärbt; Hier jedoch nicht Knoten + 1, da der letzte Knoten immer noch mit seinen Nachbarn verglichen werden muss.
         if (Knoten == graph.getAnzahlKnoten()){
@@ -42,7 +42,7 @@ public class Objektorientiert {
     }
 
     //Hier werden zwei Nachbarknoten nach gleicher Farben untersucht
-    public static boolean Sicher(Graph graph, int Farben[], int Knoten1, int Farbvorschlag){
+    private static boolean Sicher(Graph graph, int Farben[], int Knoten1, int Farbvorschlag){
 
         for (int Knoten2 = 0; Knoten2 < graph.getAnzahlKnoten(); Knoten2++){
             //Hier wird überprüft, ob zwei Knoten Nachbarn sind, und wenn ja ob Sie auch die gleiche Farbe haben
