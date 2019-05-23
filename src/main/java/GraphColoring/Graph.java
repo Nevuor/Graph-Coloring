@@ -3,31 +3,30 @@ package GraphColoring;
 public class Graph {
 
     private int AnzahlKnoten;
-    private int[][] Verbindungen;
+    static Object[][] ObjectArray;
+    static Boolean[][] BooleanArray;
 
     public Graph(int AnzahlKnoten) {
         this.AnzahlKnoten = AnzahlKnoten;
-        Verbindungen = new int[AnzahlKnoten][AnzahlKnoten];
-    }
-
-    public void VerbindungenHinzufügen(int Knoten1, int Knoten2){
-
-        Verbindungen[Knoten1][Knoten2] = 1;
-        Verbindungen[Knoten2][Knoten1] = 1;
+        ObjectArray = new Object[AnzahlKnoten][AnzahlKnoten];
+        BooleanArray = new Boolean[AnzahlKnoten][AnzahlKnoten];
     }
 
     public int getAnzahlKnoten() {
-
         return AnzahlKnoten;
     }
 
-    public int sindVerbunden(int Knoten1, int Knoten2){
+    public boolean sindVerbunden(int Knoten1, int Knoten2){
 
-        return Verbindungen[Knoten1][Knoten2];
+        return BooleanArray[Knoten1][Knoten2];
     }
 
-    public int[][] getGraphArray() {
-        return Verbindungen;
+    public static Object[][] getGraphObjectArray() {
+        return ObjectArray;
+    }
+
+    public static Boolean[][] getGraphBooleanArray() {
+        return BooleanArray;
     }
 
 }

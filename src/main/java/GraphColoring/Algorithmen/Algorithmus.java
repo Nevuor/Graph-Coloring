@@ -8,7 +8,7 @@ public class Algorithmus {
 
     public static void Berechnen(boolean funktional, Graph graph, int AnzahlKnoten){
 
-        int[] Farben = new int[AnzahlKnoten - 1];
+        int[] Farben;
 
         if (funktional == false){
 
@@ -44,7 +44,7 @@ public class Algorithmus {
         //Anzahl der Farben zurückgegeben
         return Anzahl;
     }
-
+/*
     public static void main(String[] args) {
 
         int AnzahlKnoten = 5;
@@ -63,5 +63,7 @@ public class Algorithmus {
         Berechnen(false, graph, AnzahlKnoten);
 
     }
+
+ */
 
 }

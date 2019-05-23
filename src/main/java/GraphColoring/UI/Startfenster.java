@@ -12,10 +12,7 @@ import java.util.Random;
 public class Startfenster extends JFrame{
 
     private static int AnzahlKnoten;
-
-    static int getAnzahlKnoten() {
-        return AnzahlKnoten;
-    }
+    public static int Zufallszahl;
 
     public Startfenster(){
 
@@ -34,25 +31,24 @@ public class Startfenster extends JFrame{
         JPanel center = new JPanel();
         JPanel south = new JPanel();
 
-        JLabel Text = new JLabel("Wählen Sie die Anzahl der AnzahlKnoten des Graphen");
-        JLabel oder = new JLabel("oder");
-        JButton zufaellig = new JButton("zufällig");
-        JButton erzeugen = new JButton("erzeugen");
-        final JSpinner Knoten = new JSpinner(Anzahl);
-
         //Befüllung Pane
         pane.add(north, BorderLayout.NORTH);
-
+        //Befüllung north
+        JLabel Text = new JLabel("Wählen Sie die Anzahl der AnzahlKnoten des Graphen");
         north.add(Text);
 
         pane.add(center, BorderLayout.CENTER);
-
+        //Befüllung center
+        final JSpinner Knoten = new JSpinner(Anzahl);
         center.add(Knoten);
+        JLabel oder = new JLabel("oder");
         center.add(oder);
+        JButton zufaellig = new JButton("zufällig");
         center.add(zufaellig);
 
         pane.add(south, BorderLayout.SOUTH);
-
+        //Befüllung south
+        JButton erzeugen = new JButton("erzeugen");
         south.add(erzeugen);
 
         //ActionListener
@@ -60,21 +56,24 @@ public class Startfenster extends JFrame{
         zufaellig.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Random random = new Random();
-                AnzahlKnoten = random.nextInt(21);
-                Knoten.setValue(AnzahlKnoten);
+                Zufallszahl = random.nextInt(21);
+                Knoten.setValue(Zufallszahl);
             }
         });
 
         //Überleitung auf da nächste Fenster
         erzeugen.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
+                AnzahlKnoten = (Integer)Knoten.getValue();
                 Hauptfenster hauptfenster = new Hauptfenster();
                 hauptfenster.setVisible(true);
                 Main.startfenster.dispose();
             }
         });
-
     }
 
+    public static int getAnzahlKnoten(){
+
+        return AnzahlKnoten;
+    }
 }

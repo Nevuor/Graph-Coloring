@@ -1,10 +1,10 @@
 package GraphColoring.UI;
 
+import GraphColoring.Algorithmen.Objektorientiert;
+import GraphColoring.Färbungsmöglichkeit;
 import GraphColoring.Graph;
-import GraphColoring.Main;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -23,57 +23,70 @@ import java.awt.event.ActionEvent;
 
 public class Hauptfenster extends JFrame {
 
-    private JPanel contentPane;
     private JTable table;
     private JTable tableNorth;
     private JTable tableWest;
     private int AnzahlKnoten = Startfenster.getAnzahlKnoten();
+    public Graph graph = new Graph(AnzahlKnoten);
 
-
-    /**
-     * Launch the application.
-     */
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    Hauptfenster frame = new Hauptfenster();
-                    frame.setVisible(true);
-                    Main.startfenster.dispose();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-
-    /**
-     * Create the frame.
-     */
     public Hauptfenster() {
+
+        //Deklarierung
+        super("Graph-Coloring Algorithmus");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
-        contentPane = new JPanel();
+
+        JPanel contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-        setContentPane(contentPane);
         contentPane.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+        setContentPane(contentPane);
 
-        JPanel panel_1 = new JPanel();
-        contentPane.add(panel_1);
+        JPanel mainPanel = new JPanel();
+        JPanel Ergebnis = new JPanel();
+        JPanel Farben = new JPanel();
+        JPanel panel = new JPanel();
+        JPanel panel_2 = new JPanel();
 
-        setTitle("Graphenfärbung");
-        panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+        //Befüllung Pane
+        contentPane.add(mainPanel);
+        //Befüllung mainPane
+        mainPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+
+
+        JButton BerechneObjektorientiert = new JButton("Objektorientiert berechnen");
+        JButton BerechneFunktional = new JButton("Funktional berechnen");
+
+
+        Ergebnis.add(BerechneObjektorientiert);
+
+        Ergebnis.add(panel);
+        ((FlowLayout) panel.getLayout()).setHgap(2);
+        ((FlowLayout) panel.getLayout()).setVgap(2);
+
+        Ergebnis.add(BerechneFunktional);
+
+
+        FlowLayout flowLayout_1 = (FlowLayout) panel_2.getLayout();
+        flowLayout_1.setHgap(2);
+        flowLayout_1.setVgap(2);
+        Ergebnis.add(panel_2);
+
+        Ergebnis.add(Farben);
+
+        JLabel genutzteFarben = new JLabel("genutzte Farben:");
+        Farben.add(genutzteFarben);
+
+        JLabel lblNewLabel = new JLabel("-");
+        Farben.add(lblNewLabel);
+
 
         //Object Array[][] = new Object[main.frame.KnotenAnzahl][main.frame.KnotenAnzahl];
 
-        final Graph Graph = new Graph(AnzahlKnoten);
+        //Graph = new Graph(main.landingWindow.KnotenAnzahl);
 
-
-
-        DefaultTableModel tableModel = new DefaultTableModel(Graph.getGraphArray(), AnzahlKnoten);
+        DefaultTableModel tableModel = new DefaultTableModel(graph.getGraphObjectArray(), AnzahlKnoten);
 
         table = new JTable(tableModel);
-
 
 
         DefaultTableModel tableModelWest = new DefaultTableModel(AnzahlKnoten, 1);
@@ -88,74 +101,86 @@ public class Hauptfenster extends JFrame {
         for (int i = 0; i < AnzahlKnoten; i++) {
             column = table.getColumnModel().getColumn(i);
             column.setPreferredWidth(20);
+            tableNorth.setValueAt(i, 0, i + 1);
+            tableWest.setValueAt(i, i, 0);
         }
-        for (int i = 0; i < AnzahlKnoten +1; i++) {
+        for (int i = 0; i < AnzahlKnoten + 1; i++) {
             column = tableNorth.getColumnModel().getColumn(i);
             column.setPreferredWidth(20);
+
         }
+
+
         column = tableWest.getColumnModel().getColumn(0);
         column.setPreferredWidth(20);
 
         JPanel TabellenPanel = new JPanel();
-        panel_1.add(TabellenPanel);
+        mainPanel.add(TabellenPanel);
         TabellenPanel.setLayout(new BorderLayout(0, 0));
 
         TabellenPanel.add(table, BorderLayout.CENTER);
         TabellenPanel.add(tableWest, BorderLayout.WEST);
         TabellenPanel.add(tableNorth, BorderLayout.NORTH);
 
-        JPanel panel_3 = new JPanel();
-        panel_1.add(panel_3);
-        panel_3.setLayout(new GridLayout(5, 0, 0, 0));
 
-        JButton btnBerechneMglicheFrbungen = new JButton("Berechne mögliche Färbungen");
-        btnBerechneMglicheFrbungen.addActionListener(new ActionListener() {
+        mainPanel.add(Ergebnis);
+        Ergebnis.setLayout(new GridLayout(5, 0, 0, 0));
+
+        BerechneObjektorientiert.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
 
+
+                table.setEnabled(false); //TODO
+
                 for (int i = 0; i < AnzahlKnoten; i++) {
-                    for(int a = 0; a < AnzahlKnoten; a++) {
-                        if(table.getValueAt(i, a) == null) table.setValueAt("0", i, a);
+                    for (int a = 0; a < AnzahlKnoten; a++) {
+                        if (table.getValueAt(i, a) == null) table.setValueAt("0", i, a);
                     }
                 }
 
                 DefaultTableModel dtm = (DefaultTableModel) table.getModel();
-                for (int i = 0 ; i < AnzahlKnoten ; i++)
-                    for (int j = 0 ; j < AnzahlKnoten ; j++)
-                        //Graph.getGraphArray()[i][j] = dtm.getValueAt(i,j);
+                for (int i = 0; i < AnzahlKnoten; i++)
+                    for (int j = 0; j < AnzahlKnoten; j++)
+                        Graph.getGraphObjectArray()[i][j] = dtm.getValueAt(i, j);
+
+                // Übertragung des Inhalts des Object Array in das Boolean Array
+
+                for (int i = 0; i < AnzahlKnoten; i++) {
+                    for (int a = 0; a < AnzahlKnoten; a++) {
+                        if (table.getValueAt(i, a).equals("1")) {
+                            Graph.getGraphBooleanArray()[i][a] = true;
+                        } else {
+                            Graph.getGraphBooleanArray()[i][a] = false;
+                        }
+                    }
+                }
 
 
-                        System.out.println(Arrays.deepToString(Graph.getGraphArray()));
-                //System.out.println(Array[0][0]);
+
+                System.out.println(Arrays.deepToString(Graph.getGraphObjectArray()));
+                //System.out.println(Arrays.deepToString(Graph.getGraphBooleanArray()));
+
+
+                // Färbung
+
+                Färbungsmöglichkeit Färbungsmöglichkeit = new Färbungsmöglichkeit();
+                Objektorientiert ObjektorientierteFärbung = new Objektorientiert();
+                Färbungsmöglichkeit.Knotenfarben = ObjektorientierteFärbung.Färben(graph, AnzahlKnoten);
+                System.out.println(Arrays.toString(Färbungsmöglichkeit.Knotenfarben));
+
+
+                try {
+                    Ergebnis frame = new Ergebnis(Graph.getGraphObjectArray(), Färbungsmöglichkeit.Knotenfarben);
+                    frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
             }
 
         });
-        panel_3.add(btnBerechneMglicheFrbungen);
 
-        JPanel panel = new JPanel();
-        FlowLayout flowLayout = (FlowLayout) panel.getLayout();
-        flowLayout.setVgap(2);
-        flowLayout.setHgap(2);
-        panel_3.add(panel);
-
-        JButton button = new JButton("Berechne mögliche Färbungen");
-        panel_3.add(button);
-
-        JPanel panel_2 = new JPanel();
-        FlowLayout flowLayout_1 = (FlowLayout) panel_2.getLayout();
-        flowLayout_1.setHgap(2);
-        flowLayout_1.setVgap(2);
-        panel_3.add(panel_2);
-
-        JPanel panel_7 = new JPanel();
-        panel_3.add(panel_7);
-
-        JLabel lblGenutzteFarben = new JLabel("genutzte Farben:");
-        panel_7.add(lblGenutzteFarben);
-
-        JLabel lblNewLabel = new JLabel("-");
-        panel_7.add(lblNewLabel);
 
         pack();
     }
-
 }
