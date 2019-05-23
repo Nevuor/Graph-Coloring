@@ -1,7 +1,7 @@
 package GraphColoring.UI;
 
 import GraphColoring.Algorithmen.Objektorientiert;
-import GraphColoring.Färbungsmöglichkeit;
+import GraphColoring.Faerbungsmoeglichkeit;
 import GraphColoring.Graph;
 
 import java.awt.BorderLayout;
@@ -40,7 +40,8 @@ public class Hauptfenster extends JFrame {
         JPanel mainPanel = new JPanel();
         JPanel Ergebnis = new JPanel();
         JPanel Farben = new JPanel();
-        JPanel Zwischehalter = new JPanel();
+        JPanel Zwischehalter1 = new JPanel();
+        JPanel Zwischehalter2 = new JPanel();
         JPanel TabellenPanel = new JPanel();
 
         //Pane
@@ -88,14 +89,12 @@ public class Hauptfenster extends JFrame {
                 JButton BerechneObjektorientiert = new JButton("Objektorientiert berechnen");
             Ergebnis.add(BerechneObjektorientiert);
 
-                ((FlowLayout) Zwischehalter.getLayout()).setHgap(2);
-                ((FlowLayout) Zwischehalter.getLayout()).setVgap(2);
-            Ergebnis.add(Zwischehalter);
+            Ergebnis.add(Zwischehalter1);
 
                 JButton BerechneFunktional = new JButton("Funktional berechnen");
             Ergebnis.add(BerechneFunktional);
 
-            Ergebnis.add(Zwischehalter);
+            Ergebnis.add(Zwischehalter2);
 
                 JLabel genutzteFarben = new JLabel("genutzte Farben:");
                 Farben.add(genutzteFarben);
@@ -120,7 +119,7 @@ public class Hauptfenster extends JFrame {
             for (int i = 0; i < AnzahlKnoten; i++)
                 for (int j = 0; j < AnzahlKnoten; j++)
                     Graph.getGraphObjectArray()[i][j] = dtm.getValueAt(i, j);
-
+/*
             // Übertragung des Inhalts des Object Array in das Boolean Array
 
             for (int i = 0; i < AnzahlKnoten; i++) {
@@ -128,12 +127,13 @@ public class Hauptfenster extends JFrame {
                     Graph.getGraphBooleanArray()[i][a] = table.getValueAt(i, a).equals("1");
                 }
             }
+ */
 
             System.out.println(Arrays.deepToString(Graph.getGraphObjectArray()));
-            System.out.println(Arrays.deepToString(Graph.getGraphBooleanArray()));
+            //System.out.println(Arrays.deepToString(Graph.getGraphBooleanArray()));
 
             // Färbung
-            Färbungsmöglichkeit faerbungsmoeglichkeit = new Färbungsmöglichkeit();
+            Faerbungsmoeglichkeit faerbungsmoeglichkeit = new Faerbungsmoeglichkeit();
             faerbungsmoeglichkeit.Knotenfarben = Objektorientiert.Faerben(graph, AnzahlKnoten);
             System.out.println(Arrays.toString(faerbungsmoeglichkeit.Knotenfarben));
 
@@ -144,7 +144,7 @@ public class Hauptfenster extends JFrame {
                 e.printStackTrace();
             }
         });
-        
+
         pack();
     }
 
