@@ -1,5 +1,6 @@
 package GraphColoring.UI;
 
+import GraphColoring.Algorithmen.Funktional;
 import GraphColoring.Algorithmen.Objektorientiert;
 import GraphColoring.Faerbungsmoeglichkeit;
 import GraphColoring.Graph;
@@ -58,12 +59,12 @@ public class Hauptfenster extends JFrame {
                 TabellenPanel.add(table, BorderLayout.CENTER);
 
                     DefaultTableModel tableModelWest = new DefaultTableModel(AnzahlKnoten, 1);
-        JTable tableWest = new JTable(tableModelWest);
+                    JTable tableWest = new JTable(tableModelWest);
                     tableWest.setBorder(new LineBorder(new Color(0, 0, 0)));
                 TabellenPanel.add(tableWest, BorderLayout.WEST);
 
                     DefaultTableModel tableModelNorth = new DefaultTableModel(1, AnzahlKnoten + 1);
-        JTable tableNorth = new JTable(tableModelNorth);
+                    JTable tableNorth = new JTable(tableModelNorth);
                     tableNorth.setBorder(new LineBorder(new Color(0, 0, 0)));
                 TabellenPanel.add(tableNorth, BorderLayout.NORTH);
 
@@ -102,35 +103,12 @@ public class Hauptfenster extends JFrame {
                 Farben.add(lblNewLabel);
             Ergebnis.add(Farben);
 
-        //ActionListener
+        //ActionListener Objektorientiert
         BerechneObjektorientiert.addActionListener(arg0 -> {
 
             table.setEnabled(false); //TODO
 
-            //TODO Tabellenextrator in Methode packen, da Funktional auch benötigt
-
-            for (int i = 0; i < AnzahlKnoten; i++) {
-                for (int a = 0; a < AnzahlKnoten; a++) {
-                    if (table.getValueAt(i, a) == null) table.setValueAt("0", i, a);
-                }
-            }
-
-            DefaultTableModel dtm = (DefaultTableModel) table.getModel();
-            for (int i = 0; i < AnzahlKnoten; i++)
-                for (int j = 0; j < AnzahlKnoten; j++)
-                    Graph.getGraphObjectArray()[i][j] = dtm.getValueAt(i, j);
-/*
-            // Übertragung des Inhalts des Object Array in das Boolean Array
-
-            for (int i = 0; i < AnzahlKnoten; i++) {
-                for (int a = 0; a < AnzahlKnoten; a++) {
-                    Graph.getGraphBooleanArray()[i][a] = table.getValueAt(i, a).equals("1");
-                }
-            }
- */
-
-            System.out.println(Arrays.deepToString(Graph.getGraphObjectArray()));
-            //System.out.println(Arrays.deepToString(Graph.getGraphBooleanArray()));
+            generateGraph(tableModel);
 
             // Färbung
             Faerbungsmoeglichkeit faerbungsmoeglichkeit = new Faerbungsmoeglichkeit();
@@ -144,8 +122,54 @@ public class Hauptfenster extends JFrame {
                 e.printStackTrace();
             }
         });
+        //ActionListener Funktional
+        BerechneFunktional.addActionListener(arg0 -> {
+
+            table.setEnabled(false); //TODO
+
+            generateGraph(tableModel);
+
+            // Färbung
+            Faerbungsmoeglichkeit faerbungsmoeglichkeit = new Faerbungsmoeglichkeit();
+            faerbungsmoeglichkeit.Knotenfarben = Funktional.Faerben(graph, AnzahlKnoten);
+            System.out.println(Arrays.toString(faerbungsmoeglichkeit.Knotenfarben));
+
+            //TODO Eigentlich nicht Notwendig?? da wir keine Exeption schmeißen, bzw weiterleiten...
+            try {
+                Ergebnis frame = new Ergebnis(Graph.getGraphObjectArray(), faerbungsmoeglichkeit.Knotenfarben);
+                frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
 
         pack();
     }
 
+    private void generateGraph(DefaultTableModel dtm){
+
+        for (int i = 0; i < AnzahlKnoten; i++) {
+            for (int a = 0; a < AnzahlKnoten; a++) {
+                if (table.getValueAt(i, a) == null) table.setValueAt("0", i, a);
+            }
+        }
+
+        for (int i = 0; i < AnzahlKnoten; i++) {
+            for (int j = 0; j < AnzahlKnoten; j++) {
+                Graph.getGraphObjectArray()[i][j] = dtm.getValueAt(i, j);
+            }
+        }
+
+        /*
+            // Übertragung des Inhalts des Object Array in das Boolean Array
+
+            for (int i = 0; i < AnzahlKnoten; i++) {
+                for (int a = 0; a < AnzahlKnoten; a++) {
+                    Graph.getGraphBooleanArray()[i][a] = table.getValueAt(i, a).equals("1");
+                }
+            }
+ */
+        System.out.println(Arrays.deepToString(Graph.getGraphObjectArray()));
+        //System.out.println(Arrays.deepToString(Graph.getGraphBooleanArray()));
+    }
 }

@@ -4,7 +4,7 @@ import GraphColoring.Graph;
 
 public class Funktional {
 
-    public static int[] Färben(Graph graph, int AnzahlKnoten){
+    public static int[] Faerben(Graph graph, int AnzahlKnoten){
 
         int Farben[] = new int[AnzahlKnoten];
 

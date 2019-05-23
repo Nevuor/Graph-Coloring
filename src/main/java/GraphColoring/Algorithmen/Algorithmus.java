@@ -16,7 +16,7 @@ public class Algorithmus {
 
         }else {
 
-            Farben = Funktional.Färben(graph, AnzahlKnoten);
+            Farben = Funktional.Faerben(graph, AnzahlKnoten);
 
         }
         //Farbe der Knoten wird ausgegeben
