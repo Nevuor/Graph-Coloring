@@ -1,4 +1,4 @@
-# Graphenfärbung
+﻿# Graphenfärbung
 ### Problembeschreibung
 Bei dem Problem der Graphenfärbung geht es darum jeder Kante eines Graphen eine Farbe zuzuweisen und dabei möglichst wenige Farben zu benutzen. Die einzige Einschränug ist, dass zwei verbundene Kanten nicht die gleiche Farbe haben dürfen.
 
@@ -19,5 +19,6 @@ Mit dem Button "erzeugen" wird das Fenster geschlossen und ein Objekt der Klasse
 Das Hauptfenster dient zum initialisieren des Graphen, zum aufrufen einer der Algorithmen zur Färbung des Grpahen und zur Betrachtung der Färbung. Bei der Erstellung eines Objektes der Klasse "Hauptfenster" wird ein Objekt der Klasse "Graph" erstellt. Diese beinhaltet ein zweidimensionales Array vom Typ Obejct. Ein JTable wird von diesem Array gefüllt. Beim drücken einer Knöpfe für die Färbung durch einen der Algorithmen wird der gefüllte JTable wieder in das Array gefüllt und alle leeren Felder werden mit einer Null befüllt. 
 
 ### Funktionaler Algorithmus:
+tofo
 
 ### Sequentieller Algorithmus:
