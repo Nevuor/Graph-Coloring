@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="abf22999-80b8-42c0-8047-b4814c4f94da" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GraphColoring/Algorithmen/Algorithmus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GraphColoring/Algorithmen/Algorithmus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GraphColoring/Algorithmen/Objektorientiert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GraphColoring/Algorithmen/Objektorientiert.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GraphColoring/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GraphColoring/Graph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GraphColoring/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GraphColoring/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GraphColoring/UI/Hauptfenster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GraphColoring/UI/Hauptfenster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GraphColoring/Algorithmen/Algorithmus.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GraphColoring/Algorithmen/Algorithmus.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GraphColoring/Algorithmen/Objektorientiert.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GraphColoring/Algorithmen/Objektorientiert.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GraphColoring/UI/Hauptfenster$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GraphColoring/UI/Hauptfenster$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GraphColoring/UI/Hauptfenster.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GraphColoring/UI/Hauptfenster.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -24,88 +17,71 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.3650595">
-      <split-first>
-        <leaf>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/GraphColoring/Algorithmen/Algorithmus.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-173">
-                  <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/GraphColoring/Graph.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="80">
-                  <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/GraphColoring/Algorithmen/Funktional.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="64">
-                  <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/GraphColoring/Algorithmen/Objektorientiert.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="304">
-                  <caret line="19" column="47" lean-forward="true" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/java/GraphColoring/UI/Hauptfenster.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="221">
-                  <caret line="125" column="74" selection-start-line="125" selection-start-column="74" selection-end-line="125" selection-end-column="74" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/GraphColoring/Main.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="96">
-                  <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/java/GraphColoring/UI/Hauptfenster.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="347">
-                  <caret line="132" column="22" lean-forward="true" selection-start-line="132" selection-start-column="22" selection-end-line="132" selection-end-column="22" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GraphColoring/UI/Hauptfenster.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1952">
+              <caret line="122" column="53" selection-start-line="122" selection-start-column="53" selection-end-line="122" selection-end-column="53" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GraphColoring/UI/Startfenster.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="176">
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GraphColoring/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GraphColoring/Algorithmen/Algorithmus.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="512">
+              <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GraphColoring/Algorithmen/Objektorientiert.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="304">
+              <caret line="19" column="47" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GraphColoring/Graph.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="32">
+              <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -148,7 +124,6 @@
         <option value="$PROJECT_DIR$/src/main/java/Main/Algorithmen/Objektorieniert/Backtracking.java" />
         <option value="$PROJECT_DIR$/src/main/java/Main/Algorithmen/Algorithmus.java" />
         <option value="$PROJECT_DIR$/src/main/java/Main/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GraphColoring/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/GraphColoring/Algorithmen/Objektorieniert/Greedy.java" />
         <option value="$PROJECT_DIR$/src/main/java/GraphColoring_Test/Algorithmen/Objektorieniert/Greedy.java" />
         <option value="$PROJECT_DIR$/src/main/java/GraphColoring_Test/Main.java" />
@@ -162,6 +137,8 @@
         <option value="$PROJECT_DIR$/src/main/java/GraphColoring/Algorithmen/Algorithmus.java" />
         <option value="$PROJECT_DIR$/src/main/java/GraphColoring/Algorithmen/Objektorientiert.java" />
         <option value="$PROJECT_DIR$/src/main/java/GraphColoring/Graph.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GraphColoring/UI/Startfenster.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GraphColoring/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/GraphColoring/UI/Hauptfenster.java" />
       </list>
     </option>
@@ -276,6 +253,7 @@
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="GraphColoring.UI" />
       <recent name="Main.Objektorieniert" />
       <recent name="Main" />
     </key>
@@ -351,7 +329,7 @@
     </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GraphColoring.Main" />
-      <module name="ModerneProgrammierkomzepte" />
+      <module name="graph-coloring" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="GraphColoring.*" />
@@ -399,12 +377,12 @@
       <workItem from="1558415125365" duration="25355000" />
       <workItem from="1558501487316" duration="24679000" />
       <workItem from="1558532202638" duration="95000" />
-      <workItem from="1558588452152" duration="4192000" />
+      <workItem from="1558588452152" duration="11460000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71273000" />
+    <option name="totallyTimeSpent" value="78541000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -429,7 +407,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.32936078" />
+      <window_info anchor="bottom" id="Messages" order="12" visible="true" weight="0.32936078" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -471,16 +449,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/GraphColoring_Test/Algorithmen/Objektorientiert.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/GraphColoring_Test/Graph.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/GraphColoring/Algorithmen/Objektorieniert/Backtracking.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/GraphColoring/Algorithmen/Algorithmus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-173">
-          <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GraphColoring/Algorithmen/Funktional.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
@@ -488,34 +456,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GraphColoring/Algorithmen/Objektorientiert.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/GraphColoring/Graph.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="19" column="47" lean-forward="true" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
+        <state relative-caret-position="32">
+          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GraphColoring/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/GraphColoring/Algorithmen/Objektorientiert.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        <state relative-caret-position="304">
+          <caret line="19" column="47" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GraphColoring/Algorithmen/Algorithmus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="512">
+          <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GraphColoring/Graph.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/GraphColoring/UI/landingWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+        <state relative-caret-position="303">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GraphColoring/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GraphColoring/UI/Startfenster.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GraphColoring/UI/Hauptfenster.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="132" column="22" lean-forward="true" selection-start-line="132" selection-start-column="22" selection-end-line="132" selection-end-column="22" />
+        <state relative-caret-position="1952">
+          <caret line="122" column="53" selection-start-line="122" selection-start-column="53" selection-end-line="122" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

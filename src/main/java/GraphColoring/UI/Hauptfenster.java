@@ -27,6 +27,7 @@ public class Hauptfenster extends JFrame {
     private JTable table;
     private JTable tableNorth;
     private JTable tableWest;
+    private int AnzahlKnoten = Startfenster.getAnzahlKnoten();
 
 
     /**
@@ -38,7 +39,7 @@ public class Hauptfenster extends JFrame {
                 try {
                     Hauptfenster frame = new Hauptfenster();
                     frame.setVisible(true);
-                    Main.frame.dispose();
+                    Main.startfenster.dispose();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -65,18 +66,18 @@ public class Hauptfenster extends JFrame {
 
         //Object Array[][] = new Object[main.frame.KnotenAnzahl][main.frame.KnotenAnzahl];
 
-        final Graph Graph = new Graph(Main.frame.KnotenAnzahl);
+        final Graph Graph = new Graph(AnzahlKnoten);
 
 
 
-        DefaultTableModel tableModel = new DefaultTableModel(Graph.getGraphArray(), Main.frame.KnotenAnzahl);
+        DefaultTableModel tableModel = new DefaultTableModel(Graph.getGraphArray(), AnzahlKnoten);
 
         table = new JTable(tableModel);
 
 
 
-        DefaultTableModel tableModelWest = new DefaultTableModel(Main.frame.KnotenAnzahl, 1);
-        DefaultTableModel tableModelNorth = new DefaultTableModel(1, Main.frame.KnotenAnzahl + 1);
+        DefaultTableModel tableModelWest = new DefaultTableModel(AnzahlKnoten, 1);
+        DefaultTableModel tableModelNorth = new DefaultTableModel(1, AnzahlKnoten + 1);
 
         tableWest = new JTable(tableModelWest);
         tableWest.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -84,11 +85,11 @@ public class Hauptfenster extends JFrame {
         tableNorth.setBorder(new LineBorder(new Color(0, 0, 0)));
 
         TableColumn column = null;
-        for (int i = 0; i < Main.frame.KnotenAnzahl; i++) {
+        for (int i = 0; i < AnzahlKnoten; i++) {
             column = table.getColumnModel().getColumn(i);
             column.setPreferredWidth(20);
         }
-        for (int i = 0; i < Main.frame.KnotenAnzahl +1; i++) {
+        for (int i = 0; i < AnzahlKnoten +1; i++) {
             column = tableNorth.getColumnModel().getColumn(i);
             column.setPreferredWidth(20);
         }
@@ -111,15 +112,15 @@ public class Hauptfenster extends JFrame {
         btnBerechneMglicheFrbungen.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
 
-                for (int i = 0; i < Main.frame.KnotenAnzahl; i++) {
-                    for(int a = 0; a < Main.frame.KnotenAnzahl; a++) {
+                for (int i = 0; i < AnzahlKnoten; i++) {
+                    for(int a = 0; a < AnzahlKnoten; a++) {
                         if(table.getValueAt(i, a) == null) table.setValueAt("0", i, a);
                     }
                 }
 
                 DefaultTableModel dtm = (DefaultTableModel) table.getModel();
-                for (int i = 0 ; i < Main.frame.KnotenAnzahl ; i++)
-                    for (int j = 0 ; j < Main.frame.KnotenAnzahl ; j++)
+                for (int i = 0 ; i < AnzahlKnoten ; i++)
+                    for (int j = 0 ; j < AnzahlKnoten ; j++)
                         //Graph.getGraphArray()[i][j] = dtm.getValueAt(i,j);
 
 

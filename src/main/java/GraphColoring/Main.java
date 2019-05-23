@@ -1,24 +1,15 @@
 package GraphColoring;
 
-import GraphColoring.UI.landingWindow;
-
-import java.text.ParseException;
+import GraphColoring.UI.Startfenster;
 
 public class Main {
 
-    public static landingWindow frame1;
-
-    public static landingWindow frame;
+    public static Startfenster startfenster;
 
     public static void main(String[] args) {
-        frame = null;
-        try {
-            frame = new landingWindow();
-            frame.setVisible(true);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
 
+        startfenster = new Startfenster();
+        startfenster.setVisible(true);
     }
 
 }
