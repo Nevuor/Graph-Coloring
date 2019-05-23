@@ -104,44 +104,10 @@ public class Hauptfenster extends JFrame {
             Ergebnis.add(Farben);
 
         //ActionListener Objektorientiert
-        BerechneObjektorientiert.addActionListener(arg0 -> {
+        BerechneObjektorientiert.addActionListener(arg0 -> berechne(true, table, tableModel));
 
-            table.setEnabled(false); //TODO
-
-            generateGraph(tableModel);
-
-            // Färbung
-            Faerbungsmoeglichkeit faerbungsmoeglichkeit = new Faerbungsmoeglichkeit();
-            faerbungsmoeglichkeit.Knotenfarben = Objektorientiert.Faerben(graph, AnzahlKnoten);
-            System.out.println(Arrays.toString(faerbungsmoeglichkeit.Knotenfarben));
-
-            try {
-                Ergebnis frame = new Ergebnis(Graph.getGraphObjectArray(), faerbungsmoeglichkeit.Knotenfarben);
-                frame.setVisible(true);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
         //ActionListener Funktional
-        BerechneFunktional.addActionListener(arg0 -> {
-
-            table.setEnabled(false); //TODO
-
-            generateGraph(tableModel);
-
-            // Färbung
-            Faerbungsmoeglichkeit faerbungsmoeglichkeit = new Faerbungsmoeglichkeit();
-            faerbungsmoeglichkeit.Knotenfarben = Funktional.Faerben(graph, AnzahlKnoten);
-            System.out.println(Arrays.toString(faerbungsmoeglichkeit.Knotenfarben));
-
-            //TODO Eigentlich nicht Notwendig?? da wir keine Exeption schmeißen, bzw weiterleiten...
-            try {
-                Ergebnis frame = new Ergebnis(Graph.getGraphObjectArray(), faerbungsmoeglichkeit.Knotenfarben);
-                frame.setVisible(true);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
+        BerechneFunktional.addActionListener(arg0 -> berechne(false, table, tableModel));
 
         pack();
     }
@@ -159,17 +125,31 @@ public class Hauptfenster extends JFrame {
                 Graph.getGraphObjectArray()[i][j] = dtm.getValueAt(i, j);
             }
         }
-
-        /*
-            // Übertragung des Inhalts des Object Array in das Boolean Array
-
-            for (int i = 0; i < AnzahlKnoten; i++) {
-                for (int a = 0; a < AnzahlKnoten; a++) {
-                    Graph.getGraphBooleanArray()[i][a] = table.getValueAt(i, a).equals("1");
-                }
-            }
- */
         System.out.println(Arrays.deepToString(Graph.getGraphObjectArray()));
-        //System.out.println(Arrays.deepToString(Graph.getGraphBooleanArray()));
+    }
+
+    private void berechne(boolean objektorientiert, JTable table, DefaultTableModel defaultTableModel){
+
+        table.setEnabled(false); //TODO
+
+        generateGraph(defaultTableModel);
+
+        // Färbung
+        Faerbungsmoeglichkeit faerbungsmoeglichkeit = new Faerbungsmoeglichkeit();
+        if (objektorientiert){
+            faerbungsmoeglichkeit.Knotenfarben = Objektorientiert.Faerben(graph, AnzahlKnoten);
+        }else {
+            faerbungsmoeglichkeit.Knotenfarben = Funktional.Faerben(graph, AnzahlKnoten);
+        }
+        System.out.println(Arrays.toString(faerbungsmoeglichkeit.Knotenfarben));
+
+        //TODO Eigentlich nicht Notwendig?? da wir keine Exeption schmeißen, bzw weiterleiten...
+        try {
+            Ergebnis frame = new Ergebnis(Graph.getGraphObjectArray(), faerbungsmoeglichkeit.Knotenfarben);
+            frame.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }
