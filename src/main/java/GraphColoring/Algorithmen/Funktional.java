@@ -18,11 +18,11 @@ public class Funktional {
     public static TriFunction<int[], int[], Integer, Boolean> pruefeAktuelleFarbe;
     public static BiFunction<int[], int[][], int[]> faerbeNaechstenKnoten;
 
-    public static int[] Faerben(Graph Graph, int AnzahlKnoten){
+    public static int[] Faerben(Graph übergebenerGraph, int AnzahlKnoten){
 
         int Farben[] = new int[AnzahlKnoten];
 
-        int graph[][] = Arrays.asList(Graph).toArray(new int[AnzahlKnoten-1][AnzahlKnoten-1]);
+        int graph[][] = übergebenerGraph.getIntArray();
 
         faerbeNaechstenKnoten.apply(Farben, graph);
 

@@ -138,6 +138,15 @@ public class Hauptfenster extends JFrame implements TableModelListener{
                 Graph.getGraphObjectArray()[i][j] = dtm.getValueAt(i, j);
             }
         }
+        for (int i = 0; i < AnzahlKnoten; i++) {
+            for (int j = 0; j < AnzahlKnoten; j++) {
+                if (table.getValueAt(i, j).equals("1")){
+                    Graph.getIntArray()[i][j] = 1;
+                }else {
+                    Graph.getIntArray()[i][j] = 0;
+                }
+            }
+        }
     }
 
     private void berechne(boolean objektorientiert, JTable table, DefaultTableModel defaultTableModel){

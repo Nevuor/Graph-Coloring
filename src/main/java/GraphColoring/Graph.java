@@ -4,10 +4,12 @@ public class Graph {
 
     private int AnzahlKnoten;
     private static Object[][] ObjectArray;
+    private static int[][] intArray;
 
     public Graph(int AnzahlKnoten) {
         this.AnzahlKnoten = AnzahlKnoten;
         ObjectArray = new Object[AnzahlKnoten][AnzahlKnoten];
+        intArray = new int[AnzahlKnoten][AnzahlKnoten];
     }
 
     public int getAnzahlKnoten() {
@@ -21,5 +23,7 @@ public class Graph {
     public static Object[][] getGraphObjectArray() {
         return ObjectArray;
     }
+
+    public static int[][] getIntArray(){ return intArray; }
 
 }
