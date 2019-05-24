@@ -21,10 +21,9 @@ public class Funktional {
     public static int[] Faerben(Graph übergebenerGraph, int AnzahlKnoten){
 
         int Farben[] = new int[AnzahlKnoten];
+        //int Faerbung[] = new int[AnzahlKnoten];
 
         int graph[][] = übergebenerGraph.getIntArray();
-
-        faerbeNaechstenKnoten.apply(Farben, graph);
 
         // gibt die H�ufigkeit einer �bergebenen Farbe in einem �bergebenen Array als Long zur�ck
         // wird innerhalb der Funktion nSeltensteFarbeInFaerbung aufgerufen
@@ -639,7 +638,7 @@ public class Funktional {
                             .toArray());
         };
 
-        return Farben;
+        return faerbeNaechstenKnoten.apply(Farben, graph);
     }
 
 
