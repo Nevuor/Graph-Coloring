@@ -10,8 +10,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
-import java.util.Arrays;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JButton;
@@ -36,8 +34,6 @@ public class Hauptfenster extends JFrame implements TableModelListener{
         int row = e.getFirstRow();
         int column = e.getColumn();
         TableModel model = (TableModel)e.getSource();
-        String columnName = model.getColumnName(column);
-        Object data = model.getValueAt(row, column);
 
        if(model.getValueAt(row, column) != model.getValueAt(column, row)) {
        model.setValueAt(model.getValueAt(row, column), column, row);
@@ -59,7 +55,7 @@ public class Hauptfenster extends JFrame implements TableModelListener{
 
         JPanel mainPanel = new JPanel();
         JPanel Ergebnis = new JPanel();
-        JPanel Zwischehalter1 = new JPanel();
+        JPanel Zwischehalter = new JPanel();
         JPanel TabellenPanel = new JPanel();
 
         //Pane
@@ -114,7 +110,7 @@ public class Hauptfenster extends JFrame implements TableModelListener{
                 JButton BerechneObjektorientiert = new JButton("Objektorientiert berechnen");
             Ergebnis.add(BerechneObjektorientiert);
 
-            Ergebnis.add(Zwischehalter1);
+            Ergebnis.add(Zwischehalter);
 
                 JButton BerechneFunktional = new JButton("Funktional berechnen");
             Ergebnis.add(BerechneFunktional);
@@ -124,7 +120,7 @@ public class Hauptfenster extends JFrame implements TableModelListener{
 
         //ActionListener Funktional
         BerechneFunktional.addActionListener(arg0 -> berechne(false, table, tableModel));
-        BerechneFunktional.addActionListener(arg0 -> JOptionPane.showMessageDialog(null, "Achtung! Die funktionale Färbung ist nur mit einem planaren Graphen möglich. Es existiert keine Prüfung des von Ihnen eingegebenen Grpahen auf planarität. Weitere Informationen: de.wikipedia.org/wiki/Planarer_Graph ", "Achtung", JOptionPane.INFORMATION_MESSAGE));
+        BerechneFunktional.addActionListener(arg0 -> JOptionPane.showMessageDialog(null, "Achtung! Die funktionale Fï¿½rbung ist nur mit einem planaren Graphen mï¿½glich. Es existiert keine Prï¿½fung des von Ihnen eingegebenen Grpahen auf planaritï¿½t. Weitere Informationen: de.wikipedia.org/wiki/Planarer_Graph ", "Achtung", JOptionPane.INFORMATION_MESSAGE));
         
         pack();
     }
