@@ -18,11 +18,13 @@ public class Funktional {
     public static TriFunction<int[], int[], Integer, Boolean> pruefeAktuelleFarbe;
     public static BiFunction<int[], int[][], int[]> faerbeNaechstenKnoten;
 
-    public static int[] Faerben(Graph graph, int AnzahlKnoten){
+    public static int[] Faerben(Graph Graph, int AnzahlKnoten){
 
-        int Farbe[] = new int[AnzahlKnoten];
+        int Farben[] = new int[AnzahlKnoten];
 
+        int graph[][] = Arrays.asList(Graph).toArray(new int[AnzahlKnoten-1][AnzahlKnoten-1]);
 
+        faerbeNaechstenKnoten.apply(Farben, graph);
 
         // gibt die H�ufigkeit einer �bergebenen Farbe in einem �bergebenen Array als Long zur�ck
         // wird innerhalb der Funktion nSeltensteFarbeInFaerbung aufgerufen
@@ -637,7 +639,7 @@ public class Funktional {
                             .toArray());
         };
 
-        return Farbe;
+        return Farben;
     }
 
 

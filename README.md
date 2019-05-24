@@ -30,6 +30,17 @@ Bsp: Im der Tabelle wird in der Zelle 1 / 2 folgendes angezeigt: 1 | 2 | 3 --> E
 Außerdem wird die Anzahl der genutzen unterschiedlichen Farben ausgegeben.
 
 ### Funktionaler Algorithmus:
-tofo
+Der Algorithmus löst das Problem, die Knoten eines planaren Graphen zu färben, sodass keine benachbarten, d.h. durch eine Kante verbundenen, Knoten dieselbe Farbe haben, funktional und mithilfe von Rekursion.  
+Um den Algorithmus unabhängig vom GUI zu starten, müssen der Funktion faerbeNaechstenKnoten<int[], int[][]> als Input ein mit Nullen gefülltes int[]-Array, dessen Anzahl der Elemente der Anzahl der Knoten des Graphen entspricht, sowie ein zweidimensionales int[][]-Array, welches mit Einsen und Nullen gefüllt ist, über faerbeNaechstenKnoten.apply(int[], int[][]) übergeben werden.
+Das zweidimensionale int[][]-Array stellt einen Graphen als Adjazenzmatrix dar, wobei eine Eins für eine vorhandene Kante und eine Null für die Abwesenheit einer Kante steht. Das int[][]-Array besitzt folglich in beiden Dimensionen auch genauso viele Elemente wie der Graph Knoten hat.
+   
+Rückgabewert der Funktion und somit des Algorithmus ist ein eindimensionales int[]-Array, welches mit Zahlen von 1 bis 4 gefüllt ist, wobei jede der Zahlen eine von vier Farben darstellt, mit denen der Graph gefärbt wurde. 
+Daher bezeichne ich dieses Array hier und in den Kommentaren im Quellcode meist als Färbungs-Array. Der Vier-Farben-Satz besagt, dass es möglich ist, jeden beliebigen planaren Graphen mit maximal Vier Farben zu färben. Daher kann der Algorithmus auf alle planaren Graphen, angewendet werden. 
+Um funktional zu arbeiten, verwendet der Algorithmus keine Schleifen, keine direkten Array-Zugriffe (Arrays werden ausschließlich mithilfe von Streams verarbeitet) und innerhalb der Funktionen keine, außer der durch Übergabeparameter übergebenen, Variablen.
+Die Funktion faerbeNaechstenKnoten<int[], int[][]>  bevorzugt immer die bisher am seltensten verwendete Farbe zur Färbung eines Knotens. Es wird anschließend geprüft, ob diese Farbe hinsichtlich der Nachbarknoten möglich ist. Danach wird geprüft, ob es möglich ist, auf Basis der Färbung des Knotens auch die weiteren noch zu färbenden Knoten zu färben. 
+Dazu ruft sich die Funktion faerbeNaechstenKnoten<int[], int[][]> selbst auf, wobei das übergebene Graph-Array gleich bleibt, nun aber ein neues Färbungs-Array übergeben wird. Dieses enthält nun auch die Farbe des aktuell gefärbt werdenden Knotens. Scheitert der Testlauf, also ist es nicht möglich auf Basis der gewählten Farbe den gesamten Graphen zu färben, so wird die am nächstseltensten genutzte Farbe ausprobiert. 
+Falls keine der vier Farben möglich ist, so wird das Färbungs-Array an die vorhergehende Rekursionsstufe zurückgegeben und diese versucht eine neue passende Farbe zu finden. Der Algorithmus löst das Problem also durch Backtracking. 
+Ist der Testlauf erfolgreich abgeschlossen, so wird der Knoten auch tatsächlich gefärbt, indem an die vorhergehende Rekursionsstufe das Ergebnis des rekursiven Funktionsaufrufes faerbeNaechstenKnoten<int[], int[][]>, übergeben wird, sodass, wenn der Graph bis zum letzten Knoten, also auf die tiefste Rekursionsstufe gefärbt worden ist, diese Färbung als Färbungs-Array bis auf die höchste Rekursionsstufe weitergereicht wird. Die Aufgaben und detaillierten Funktionsweisen aller Funktionen sind durch Kommentare direkt im Quellcode beschrieben.
+
 
 ### Sequentieller Algorithmus:
