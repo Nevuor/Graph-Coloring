@@ -70,7 +70,7 @@ public class Startfenster extends JFrame{
 
         //Überleitung auf da nächste Fenster
         erzeugen.addActionListener(e -> {
-            AnzahlKnoten = (Integer)KnotenAnzahlFeld.getValue();
+            AnzahlKnoten = ((Number) KnotenAnzahlFeld.getValue()).intValue();
             if (AnzahlKnoten < 4) {
             	JOptionPane.showMessageDialog(null, "Mit einem Graphen, der nur " + AnzahlKnoten + " Knoten hat macht das ganze doch gar keinen Spaß! ", "Achtung", JOptionPane.INFORMATION_MESSAGE);
             }else {

@@ -76,7 +76,6 @@ class Ergebnis extends JFrame {
 
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.EAST);
-		System.out.println(Arrays.toString(knotenfarben));
 		
 		 int groessteZahlImArray = 1;
 		    for (int i = 0; i < knotenfarben.length; i++) {
