@@ -7,14 +7,14 @@ Die Knoten eines planaren Graphen sollen so gefärbt werden, dass keine, durch e
 ![Alt-Text](https://github.com/Lucab2k/Graphenf-rbungUI/blob/master/Graphenf%C3%A4rbung/Klassendiagramm.png?raw=true "Klassendiagramm")
 ### Aufbau der UI:
 
-##### Startfenster
+#### Startfenster
 Das landing Windows dient als Eingabemaske für die Anzahl der Kanten des Graphen. Neben der Eingabe über ein FormattedTextField gibt es einen Button um eine zufällige Zahl in das FormattedTextField zu schreiben.
 Mit dem Button "erzeugen" wird das Fenster geschlossen und ein Objekt der Klasse "Hauptfenster" erzeugt.
 Weitere Features:
 * Wenn die eingegebene zahl < 4 ist, wird statt dem Hauptfenster eine Meldung geöffnet, die darauf hinweist, das es sinvoll ist einen Graphen mit mehr als drei Kanten zu betrachten.
 * In das FormattedTextField können nur maximal dreistellige Zahlen eingetragen werden. Außerdem werden führende Nullen automatisch ergänzt.
 
-##### Hauptfenster
+#### Hauptfenster
 Das Hauptfenster dient zum definieren der Verbindungen der einzelnen Kanten und zum starten der Algorithmen. Bei der Erstellung eines Objektes der Klasse "Hauptfenster" wird ein Objekt der Klasse "Graph" erstellt. Diese beinhaltet ein zweidimensionales Array vom Typ Obejct. Ein JTable, das die gleiche Größe wie das Array besitzt, wird erstellt. Beim drücken einer Knöpfe für die Färbung durch einen der Algorithmen wird der gefüllte JTable in das Array gefüllt und alle leeren Felder werden mit einer Null befüllt. Nun wird der gewählte Algorithmus ausgeführt und ein Array vom Typ Integer mit der Länge der Anzahl an Knoten, das die Farben der Knoten enthält, wird zurückgegeben.
 Weitere Features:
 * Bei der Erstellung des JTabels werden die Verbindungen zwischen den gleichen Knoten, also 1/1, 2/2 usw..., automatisch mit 1 befüllt, da sie immer verbunden sind.
