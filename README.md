@@ -1,10 +1,6 @@
-﻿# Graphenfärbung
+﻿# Färbung der Knoten eines planaren Graphen
 ### Problembeschreibung
-Bei dem Problem der Graphenfärbung geht es darum jeder Kante eines Graphen eine Farbe zuzuweisen und dabei möglichst wenige Farben zu benutzen. Die einzige Einschränug ist, dass zwei verbundene Kanten nicht die gleiche Farbe haben dürfen.
-
-![Alt-Text](https://upload.wikimedia.org/wikipedia/commons/f/fd/GolombGraphProperties.svg "Beispiel eines gefärbten Graphen")
-
-(MathsPoetry [CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)])
+Die Knoten eines planaren Graphen sollen so gefärbt werden, dass keine, durch eine Kante verbundenen Knoten, dieselbe Farbe haben. 
 
 ### Klassendiagramm:
 
