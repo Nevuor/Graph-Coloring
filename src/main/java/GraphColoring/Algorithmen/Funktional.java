@@ -21,7 +21,7 @@ public class Funktional {
     public static int[] Faerben(Graph übergebenerGraph, int AnzahlKnoten){
 
         int Farben[] = new int[AnzahlKnoten];
-        //int Faerbung[] = new int[AnzahlKnoten];
+        int Faerbung[] = new int[AnzahlKnoten];
 
         int graph[][] = übergebenerGraph.getIntArray();
 
@@ -638,7 +638,14 @@ public class Funktional {
                             .toArray());
         };
 
-        return faerbeNaechstenKnoten.apply(Farben, graph);
+
+        Faerbung = faerbeNaechstenKnoten.apply(Farben, graph);
+
+        System.out.println(Arrays.toString(Faerbung));
+
+        return Faerbung;
+
+
     }
 
 

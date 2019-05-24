@@ -2,6 +2,8 @@ package GraphColoring.Algorithmen;
 
 import GraphColoring.Graph;
 
+import java.util.Arrays;
+
 public class Objektorientiert {
 
     public static int[] Faerben(Graph graph, int AnzahlKnoten){
@@ -10,6 +12,8 @@ public class Objektorientiert {
         int[] Farben = new int[AnzahlKnoten];
         //In dieser Methode werden die Knoten "gefärbt"
         FaerbungsUtil(graph, Farben, 0);
+
+        System.out.println(Arrays.toString(Farben));
 
         return Farben;
     }

@@ -77,17 +77,35 @@ class Ergebnis extends JFrame {
 
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.EAST);
-		
+
+
+/*
 		 int groessteZahlImArray = 1;
 		    for (int i = 0; i < knotenfarben.length; i++) {
 		        if (knotenfarben[i] > groessteZahlImArray) {
 		        	groessteZahlImArray = knotenfarben[i];
 		        }
 		    }
-		JLabel anzahlFarben = new JLabel("Anzahl genutzer Farben:" + groessteZahlImArray);
+		    
+ */
+		JLabel anzahlFarben = new JLabel("Anzahl genutzer Farben:" + getAnzahlFarben(knotenfarben));
 		contentPane.add(anzahlFarben, BorderLayout.SOUTH);
 		
 		pack();
 	}
+    private static int getAnzahlFarben(int Farben[]){
+
+        int Anzahl = 1;
+        //Hier wird der Array sortiert
+        Arrays.sort(Farben);
+        for (int Zähler = 1; Zähler <= Farben.length - 1; Zähler++){
+            //Hier wird der Array nacheinander durchgegangen, und wenn sich die einzelnen Werte ändern, wird der Anzahlzähler der Farben erhöht
+            if (Farben[Zähler] != Farben[Zähler - 1]) {
+                Anzahl++;
+            }
+        }
+        //Anzahl der Farben zurückgegeben
+        return Anzahl;
+    }
 
 }
