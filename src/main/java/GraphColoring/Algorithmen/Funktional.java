@@ -24,43 +24,43 @@ public class Funktional {
 
 
 
-        // gibt die Häufigkeit einer übergebenen Farbe in einem übergebenen Array als Long zurück
+        // gibt die Hï¿½ufigkeit einer ï¿½bergebenen Farbe in einem ï¿½bergebenen Array als Long zurï¿½ck
         // wird innerhalb der Funktion nSeltensteFarbeInFaerbung aufgerufen
-        BiFunction<int[], Integer, Long> WieHaeüfigIstInputfarbeInFaerbung = (aktuelleFaerbung, Inputfarbe) -> (Arrays.stream(aktuelleFaerbung).filter(farbe ->   farbe == (Inputfarbe)).count());
+        BiFunction<int[], Integer, Long> WieHaeufigIstInputfarbeInFaerbung = (aktuelleFaerbung, Inputfarbe) -> (Arrays.stream(aktuelleFaerbung).filter(farbe ->   farbe == (Inputfarbe)).count());
 
-        // gibt die am n-seltensten (0<n<5; also die am seltensten, zweitseltensten, drittseltensten oder viertseltensten) im übergebenen Färbungs-Array vorkommende Farbe zurück
-        // sind mehrere Zahlen gleich häufig, so wird die kleinere zurückgegeben
-        // Achtung: nur für n=1 wird direkt die selstenste Zahl als Long zurückgegeben. Andrenfalls wird Rekursion angewendet
+        // gibt die am n-seltensten (0<n<5; also die am seltensten, zweitseltensten, drittseltensten oder viertseltensten) im ï¿½bergebenen Fï¿½rbungs-Array vorkommende Farbe zurï¿½ck
+        // sind mehrere Zahlen gleich hï¿½ufig, so wird die kleinere zurï¿½ckgegeben
+        // Achtung: nur fï¿½r n=1 wird direkt die selstenste Zahl als Long zurï¿½ckgegeben. Andrenfalls wird Rekursion angewendet
 
         nSeltensteFarbeInFaerbung = (aktuelleFaerbung, n, darfNichtMehrGeprueftWerden) -> {
 
-            // püfen, ob 1 am seltensten vorkommt
+            // pï¿½fen, ob 1 am seltensten vorkommt
             if (Arrays.stream(darfNichtMehrGeprueftWerden).filter(x -> x==1).count()==0
                     &&
-                    ((WieHaeüfigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 1) <= WieHaeüfigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 2))
+                    ((WieHaeufigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 1) <= WieHaeufigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 2))
                             || Arrays.stream(   darfNichtMehrGeprueftWerden).filter(x -> x ==2).count()==1)
-                    && ((WieHaeüfigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 1) <= WieHaeüfigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 3)
+                    && ((WieHaeufigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 1) <= WieHaeufigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 3)
                     || Arrays.stream(darfNichtMehrGeprueftWerden).filter(x -> x==3).count()==1))
-                    && ((WieHaeüfigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 1) <= WieHaeüfigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 4)
+                    && ((WieHaeufigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 1) <= WieHaeufigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 4)
                     || Arrays.stream(darfNichtMehrGeprueftWerden).filter(x -> x==4).count()==1)))
             {if (n == 1)
                 return (1);
 
             else
                 //Rekursion mit maximaler Rekursionstiefe 3. Die Funktion ruft sich
-                //sich selbst auf, nun aber mit der Information im Übergabeparameter darfNichtMehrGeprüftWerden,
-                // welche Farben (hier ist es die 1) zwar seltener vorkommen, aber nicht mehr gprüft werden dürfen,
+                //sich selbst auf, nun aber mit der Information im ï¿½bergabeparameter darfNichtMehrGeprï¿½ftWerden,
+                // welche Farben (hier ist es die 1) zwar seltener vorkommen, aber nicht mehr gprï¿½ft werden dï¿½rfen,
                 // da nicht die seltenste, sonder die 2.-,3.- oder 4.-seltenste Farbe gesucht wird
                 return (nSeltensteFarbeInFaerbung.apply(aktuelleFaerbung, n - 1, IntStream.concat(Arrays.stream(darfNichtMehrGeprueftWerden), IntStream.of(1)).toArray()));
 
             }
-            // prüfen, ob 2 am seltensten vorkommt
+            // prï¿½fen, ob 2 am seltensten vorkommt
             if (Arrays.stream(darfNichtMehrGeprueftWerden).filter(x -> x==2).count()==0 &&
-                    ((WieHaeüfigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 2) <= WieHaeüfigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 1))
+                    ((WieHaeufigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 2) <= WieHaeufigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 1))
                             || Arrays.stream(darfNichtMehrGeprueftWerden).filter(x -> x==1).count()==1)
-                    && ((WieHaeüfigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 2) <= WieHaeüfigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 3))
+                    && ((WieHaeufigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 2) <= WieHaeufigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 3))
                     ||Arrays.stream(darfNichtMehrGeprueftWerden).filter(x -> x==3).count()==1)
-                    && ((WieHaeüfigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 2) <= WieHaeüfigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 4))
+                    && ((WieHaeufigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 2) <= WieHaeufigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 4))
                     ||Arrays.stream(darfNichtMehrGeprueftWerden).filter(x -> x==4).count()==1)
             ) {
                 if (n == 1)
@@ -69,13 +69,13 @@ public class Funktional {
                     return (nSeltensteFarbeInFaerbung.apply(aktuelleFaerbung, n - 1,IntStream.concat(Arrays.stream(darfNichtMehrGeprueftWerden), IntStream.of(2)).toArray()));
             }
 
-            // prüfen, ob 3 am seltensten vorkommt
+            // prï¿½fen, ob 3 am seltensten vorkommt
             if (Arrays.stream(darfNichtMehrGeprueftWerden).filter(x -> x==3).count()==0 &&
-                    ((WieHaeüfigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 3) <= WieHaeüfigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 1))
+                    ((WieHaeufigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 3) <= WieHaeufigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 1))
                             || Arrays.stream(darfNichtMehrGeprueftWerden).filter(x -> x ==1).count()==1)
-                    && ((WieHaeüfigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 3) <= WieHaeüfigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 2))
+                    && ((WieHaeufigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 3) <= WieHaeufigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 2))
                     ||Arrays.stream(darfNichtMehrGeprueftWerden).filter(x -> x==2).count()==1)
-                    && ((WieHaeüfigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 3) <= WieHaeüfigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 4))
+                    && ((WieHaeufigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 3) <= WieHaeufigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 4))
                     || Arrays.stream(darfNichtMehrGeprueftWerden).filter(x -> x==4).count()==1)
             ) {
                 if (n == 1)
@@ -85,13 +85,13 @@ public class Funktional {
 
             }
 
-            //prüfen, ob 4 am seltensten vorkommt
+            //prï¿½fen, ob 4 am seltensten vorkommt
             if (Arrays.stream(darfNichtMehrGeprueftWerden).filter(x -> x==4).count()==0
-                    && ((WieHaeüfigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 4) <= WieHaeüfigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 2))
+                    && ((WieHaeufigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 4) <= WieHaeufigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 2))
                     || Arrays.stream(darfNichtMehrGeprueftWerden).filter(x -> x==2).count()==1)
-                    && ((WieHaeüfigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 4) <= WieHaeüfigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 3))
+                    && ((WieHaeufigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 4) <= WieHaeufigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 3))
                     || Arrays.stream(darfNichtMehrGeprueftWerden).filter(x -> x == 3).count()==1)
-                    && ((WieHaeüfigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 4) <= WieHaeüfigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 1))
+                    && ((WieHaeufigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 4) <= WieHaeufigIstInputfarbeInFaerbung.apply(aktuelleFaerbung, 1))
                     ||Arrays.stream(darfNichtMehrGeprueftWerden).filter(x -> x == 1).count()==1)
             ) {
                 if (n == 1)
@@ -103,11 +103,11 @@ public class Funktional {
             return (1);
         };
 
-        // gibt die Anzahl, der im übergebenen Färbungs-Array gefärbten Knoten aus
+        // gibt die Anzahl, der im ï¿½bergebenen Fï¿½rbungs-Array gefï¿½rbten Knoten aus
         Function<int[], Long> aktuellerKnoten = aktuelleFaerbung -> (Arrays.stream(aktuelleFaerbung).filter(farbe -> farbe != 0).count());
 
-        // Hat der zu färbende Knoten keinen benachbarten Knoten, der dieselbe Farbe hat, wie er, wird true zurückgegeben.
-        // Da die Farbe jedes Knotens einzeln mit der Farbe des zu färbenden Knotens verglichen werden muss und Schleifen
+        // Hat der zu fï¿½rbende Knoten keinen benachbarten Knoten, der dieselbe Farbe hat, wie er, wird true zurï¿½ckgegeben.
+        // Da die Farbe jedes Knotens einzeln mit der Farbe des zu fï¿½rbenden Knotens verglichen werden muss und Schleifen
         // in der funktionalen Programmierung nicht erlaubt sind, wird hier wieder rekursiv gearbeitet
         pruefeAktuelleFarbe = (faerbung, verbindungen, aktuelleFarbe) -> {
 
@@ -117,8 +117,8 @@ public class Funktional {
                 return true;
             }
 
-            // Prüfung ob die Farbe des aktuellen Knotens (= aktuelleFarbe) mit der des nun "ersten" Knotens im Array
-            // übereinstimmt und der "erster" Knoten im Array ein Nachbar des aktuellen Knotens ist
+            // Prï¿½fung ob die Farbe des aktuellen Knotens (= aktuelleFarbe) mit der des nun "ersten" Knotens im Array
+            // ï¿½bereinstimmt und der "erster" Knoten im Array ein Nachbar des aktuellen Knotens ist
             if (Arrays.equals(IntStream.of(aktuelleFarbe).limit(1).toArray(),IntStream.of(faerbung).limit(1).toArray())
 
                     &&
@@ -127,10 +127,10 @@ public class Funktional {
 
 
             } else
-                // Rekursion, wobei nun jeweils das 1. Element aus dem Array, das die Färbungen beinhaltet (hier
+                // Rekursion, wobei nun jeweils das 1. Element aus dem Array, das die Fï¿½rbungen beinhaltet (hier
                 // extra nicht aktuelleFaerbung, sondern faerbung genannt, um klarzustellen, dass es sich bei den Elementen nur um eine Teilmenge
-                // des aktuelleFaerbung-Arrays handelt) und dem Array, das die Information über die benachbarten Knoten beinhaltet entfernt wird,
-                //sodass, im Verlauf der Rekursionsebenen alle Farben der Knoten mit der Färbung des aktuellen Knotens verglichen werden.
+                // des aktuelleFaerbung-Arrays handelt) und dem Array, das die Information ï¿½ber die benachbarten Knoten beinhaltet entfernt wird,
+                //sodass, im Verlauf der Rekursionsebenen alle Farben der Knoten mit der Fï¿½rbung des aktuellen Knotens verglichen werden.
                 return (pruefeAktuelleFarbe.apply(Arrays.stream(faerbung).skip(1).toArray(), Arrays.stream(verbindungen).skip(1).toArray(),aktuelleFarbe));
 
         };
@@ -139,30 +139,30 @@ public class Funktional {
 
         faerbeNaechstenKnoten = (aktuelleFaerbung, einGraph) -> {
 
-            //Wenn alle Farben berechnet wurden, wird das Färbungs-Array zurückgegeben ("Abbruchbedingung" für die Rekursion)
+            //Wenn alle Farben berechnet wurden, wird das Fï¿½rbungs-Array zurï¿½ckgegeben ("Abbruchbedingung" fï¿½r die Rekursion)
             if(Arrays.stream(aktuelleFaerbung).filter(x -> x==0).count()==0){
                 return aktuelleFaerbung;
             }
-            //Es werden die vier Möglichkeiten, diesen Knoten zu färben getestet und falls der Test erfolgreich ist, angewendet.
+            //Es werden die vier Mï¿½glichkeiten, diesen Knoten zu fï¿½rben getestet und falls der Test erfolgreich ist, angewendet.
             //Es handelt sich um einen Greedy-Algorithmus, d.h. es wird beim Testen mit der bisher im Graphen am seltensten vorkommenden Farbe begonnen
 
-            if (//Test, ob die Färbung mit der seltensten Farbe funktioniert
+            if (//Test, ob die Fï¿½rbung mit der seltensten Farbe funktioniert
 
-                // pruefeAktuelleFarbe liefert einen Boolschen Wert, der true ist, wenn es für
-                // den aktuell gefärbeten Knoten keinen angrenzenden Knoten gibt, der die Farbe hat, mit welcher der aktuell gefärbte
-                // Knoten gerdae gefärbt wird (hier die seltenste Farbe).
+                // pruefeAktuelleFarbe liefert einen Boolschen Wert, der true ist, wenn es fï¿½r
+                // den aktuell gefï¿½rbeten Knoten keinen angrenzenden Knoten gibt, der die Farbe hat, mit welcher der aktuell gefï¿½rbte
+                // Knoten gerdae gefï¿½rbt wird (hier die seltenste Farbe).
 
                     pruefeAktuelleFarbe.apply(
-                            //Es werden als Input benötigt: (a), b), c))
-                            // a) das komplette Färbungs-Array mit der Farbe, auf die gerade getestet wird
+                            //Es werden als Input benï¿½tigt: (a), b), c))
+                            // a) das komplette Fï¿½rbungs-Array mit der Farbe, auf die gerade getestet wird
 
-                            //Bildlich gesprochen (natürlich nicht korrekt, da hier mit Streams operiert wird):
-                            //aktuelleFaerbung wird (durch Filter) "getrennt", die erste 0 (sie steht für den Knoten, der gerade gefärbt wird)
+                            //Bildlich gesprochen (natï¿½rlich nicht korrekt, da hier mit Streams operiert wird):
+                            //aktuelleFaerbung wird (durch Filter) "getrennt", die erste 0 (sie steht fï¿½r den Knoten, der gerade gefï¿½rbt wird)
                             //wird durch die aktuell am seltensten verwendete Farbe ersetzt, und aktuelleFaerbung wird wieder zusammengesetzt
                             IntStream.concat(
                                     // Es wird ein Stream, bestehend aus den bisher genutzten Farben, gefolgt von der bisher am seltensten verwendeten Farbe erzeugt
                                     IntStream.concat(
-                                            // Erzeugung eines Streams, der nur die Farben beinhaltet, mit denen schon Knoten gefärbt wurden
+                                            // Erzeugung eines Streams, der nur die Farben beinhaltet, mit denen schon Knoten gefï¿½rbt wurden
                                             Arrays.stream(
                                                     aktuelleFaerbung).
                                                     filter(farbe -> farbe != 0),
@@ -171,41 +171,41 @@ public class Funktional {
                                                     // berechnen der seltensten  Farbe, die bisher genutzt wird
                                                     nSeltensteFarbeInFaerbung.apply(
                                                             aktuelleFaerbung, 1,IntStream.of().toArray()))),
-                                    // Es wird ein Stream aus 0en erzeugt, wobei jede 0 für einen noch nicht gefärbten Knoten steht (ausgenommen des Knotens der aktuell gefärbt werden soll)
+                                    // Es wird ein Stream aus 0en erzeugt, wobei jede 0 fï¿½r einen noch nicht gefï¿½rbten Knoten steht (ausgenommen des Knotens der aktuell gefï¿½rbt werden soll)
                                     Arrays.stream(aktuelleFaerbung)
                                             .filter(farbe -> farbe == 0)
                                             .skip(1))
                                     .toArray(),
 
 
-                            // b) Die Verbindungen des aktuell zu färbenden Knotens zu den Knoten, die bereits gefärbt sind
+                            // b) Die Verbindungen des aktuell zu fï¿½rbenden Knotens zu den Knoten, die bereits gefï¿½rbt sind
                             Arrays.stream(einGraph)
                                     //Hier liegt noch ein 2D-Array vor, daher werden alle Arrays, die im Array Graph vor dem, den aktuellen Knoten betreffenden Array, und nach diesem kommen
-                                    // im Stream übersprungen bzw. durch die Festlegung eines Limits abgeschnitten
+                                    // im Stream ï¿½bersprungen bzw. durch die Festlegung eines Limits abgeschnitten
                                     .skip(aktuellerKnoten
                                             .apply(aktuelleFaerbung))
                                     .limit(aktuellerKnoten.apply(aktuelleFaerbung))
                                     .flatMapToInt(x -> Arrays.stream(x))
-                                    //jetzt werden die Informationen über die noch nicht gefärbten Knoten und den Knoten selbst entfernt. Dies ist wichtig für die Abbruchbedingung von pruefeAktuelleFarbe
+                                    //jetzt werden die Informationen ï¿½ber die noch nicht gefï¿½rbten Knoten und den Knoten selbst entfernt. Dies ist wichtig fï¿½r die Abbruchbedingung von pruefeAktuelleFarbe
                                     .limit((aktuellerKnoten.apply(aktuelleFaerbung)))
                                     .toArray(),
 
-                            // c) Die Farbe, in der der aktuelle Knoten gerade gefärbt wird
+                            // c) Die Farbe, in der der aktuelle Knoten gerade gefï¿½rbt wird
                             nSeltensteFarbeInFaerbung.apply(aktuelleFaerbung,1, IntStream.of().toArray()))
                             &&
-                            //Es wird rekursiv das Färbungs-Array angefordert, das sich ergibt, wenn man den gesamten Graphen auf Basis der Färbung des aktuellen
-                            // Knotens mit der am n-seltensten verwendeten Farbe durchfärbt und aus diesem wird ein Stream gemacht
+                            //Es wird rekursiv das Fï¿½rbungs-Array angefordert, das sich ergibt, wenn man den gesamten Graphen auf Basis der Fï¿½rbung des aktuellen
+                            // Knotens mit der am n-seltensten verwendeten Farbe durchfï¿½rbt und aus diesem wird ein Stream gemacht
                             Arrays.stream(faerbeNaechstenKnoten.apply(
 
-                                    // Bildlich gesprochen (natürlich nicht korrekt, da hier mit Streams operiert wird):
-                                    // aktuelleFaerbung wird (durch Filter) "getrennt", die erste 0 (sie steht für den Knoten, der gerade gefärbt wird)
+                                    // Bildlich gesprochen (natï¿½rlich nicht korrekt, da hier mit Streams operiert wird):
+                                    // aktuelleFaerbung wird (durch Filter) "getrennt", die erste 0 (sie steht fï¿½r den Knoten, der gerade gefï¿½rbt wird)
                                     // wird durch die aktuell am seltensten verwendete Farbe ersetzt, und aktuelleFaerbung wird wieder zusammengesetzt
                                     IntStream.concat(
 
                                             // Es wird ein Stream, bestehend aus den bisher genutzten Farben, gefolgt von der bisher am seltensten verwendeten Farbe erzeugt
                                             IntStream.concat(
 
-                                                    // Erzeugung eines Streams, der nur die Farben beinhaltet, mit denen schon Knoten gefärbt wurden
+                                                    // Erzeugung eines Streams, der nur die Farben beinhaltet, mit denen schon Knoten gefï¿½rbt wurden
                                                     Arrays.stream(aktuelleFaerbung)
                                                             .filter(farbe -> farbe != 0),
 
@@ -214,7 +214,7 @@ public class Funktional {
                                                             // berechnen der n-seltensten Farbe, die bisher genutzt wird
                                                             nSeltensteFarbeInFaerbung.apply(aktuelleFaerbung, 1, IntStream.of().toArray()))),
 
-                                            // Es wird ein Stream aus 0en erzeugt, wobei jede 0 für einen noch nicht gefärbten Knoten steht (ausgenommen des Knotens der aktuell gefärbt werden soll), erzeugt
+                                            // Es wird ein Stream aus 0en erzeugt, wobei jede 0 fï¿½r einen noch nicht gefï¿½rbten Knoten steht (ausgenommen des Knotens der aktuell gefï¿½rbt werden soll), erzeugt
                                             Arrays.stream(aktuelleFaerbung)
                                                     .filter(farbe -> farbe == 0)
                                                     .skip(1))
@@ -223,60 +223,60 @@ public class Funktional {
 
                                     einGraph)
 
-                                    //Muss vor folgendem Hintergrund betrachtet werden: kann die Färbung eines Knotens nicht erfolgreich durchgeführt werden,
-                                    // wird das Färbungs-Array, mit dem als Übergabeparameter die Funktion aufgerufen wurde, wieder zurückgegeben.
-                                    // Die Färbung war also nur genau dann erfolgreich, wenn das Färbungs-Array komplett mit Farben gefüllt wurde und nicht zwischenzeitig
-                                    //zurückgegeben wurde.
+                                    //Muss vor folgendem Hintergrund betrachtet werden: kann die Fï¿½rbung eines Knotens nicht erfolgreich durchgefï¿½hrt werden,
+                                    // wird das Fï¿½rbungs-Array, mit dem als ï¿½bergabeparameter die Funktion aufgerufen wurde, wieder zurï¿½ckgegeben.
+                                    // Die Fï¿½rbung war also nur genau dann erfolgreich, wenn das Fï¿½rbungs-Array komplett mit Farben gefï¿½llt wurde und nicht zwischenzeitig
+                                    //zurï¿½ckgegeben wurde.
 
                             ).filter(x -> x==0).count()==0
 
             )
 
-            // return-Anweisung wird nur Ausgeführt, wenn
+            // return-Anweisung wird nur Ausgefï¿½hrt, wenn
             //
-            //a) Prüfung, ob alle zukünftigen Schritte auf Basis des aktuellen Färbungs-Schritts funktionieren
+            //a) Prï¿½fung, ob alle zukï¿½nftigen Schritte auf Basis des aktuellen Fï¿½rbungs-Schritts funktionieren
             //
             //                  und
             //
-            //b) Prüfung, ob die Farbe, mit der in diesem Schritt gefärbt werden soll (hier ist es die seltenste Farbe) nicht dieselbe, wie die, eines angrenzenden Knotens ist
+            //b) Prï¿½fung, ob die Farbe, mit der in diesem Schritt gefï¿½rbt werden soll (hier ist es die seltenste Farbe) nicht dieselbe, wie die, eines angrenzenden Knotens ist
             //
             //mit true abgeschlossen wurden.
 
             {
                 // rekursiver Aufruf
-                // es wird das komplett fertig gefärbte Färbungs-Array (von dem wir uns aufgrund der beiden zuvor geprüften Bedingungen sicher sein können,
-                // dass es eine korrekte Färbungs-Möglichkeit darstellt) zurückgegeben.
+                // es wird das komplett fertig gefï¿½rbte Fï¿½rbungs-Array (von dem wir uns aufgrund der beiden zuvor geprï¿½ften Bedingungen sicher sein kï¿½nnen,
+                // dass es eine korrekte Fï¿½rbungs-Mï¿½glichkeit darstellt) zurï¿½ckgegeben.
 
 
                 return (
 
-                        // Gleicher Code wie in der if-Bedingung (erste Aussage der &&-Verknüpfung), daher nur kompakter geschrieben und unkommentiert.
-                        // Um uns an das Prinzip der Funktionalen Programmierung, innerhalb der Funktionen keine Variablen außer den Übergabeparametern zu nutzen,
-                        // müssen wir die Funktion faerbeNaechstenKnoten zweimal aufrufen einmal zuvor zum überprüfen und nun zur tatsächlichen Berechnung und
-                        // anschließenden Rückgabe. Da pro Knoten nur ein zusätzlicher Aufruf von faerbeNaechstenKnoten erforderlich ist, läuft die zusätzliche Laufzeit, die für
-                        // größere und und strukturell schwieriger zu färbende Graphen benötig wird im im unendlichen gegen 0.
+                        // Gleicher Code wie in der if-Bedingung (erste Aussage der &&-Verknï¿½pfung), daher nur kompakter geschrieben und unkommentiert.
+                        // Um uns an das Prinzip der Funktionalen Programmierung, innerhalb der Funktionen keine Variablen auï¿½er den ï¿½bergabeparametern zu nutzen,
+                        // mï¿½ssen wir die Funktion faerbeNaechstenKnoten zweimal aufrufen einmal zuvor zum ï¿½berprï¿½fen und nun zur tatsï¿½chlichen Berechnung und
+                        // anschlieï¿½enden Rï¿½ckgabe. Da pro Knoten nur ein zusï¿½tzlicher Aufruf von faerbeNaechstenKnoten erforderlich ist, lï¿½uft die zusï¿½tzliche Laufzeit, die fï¿½r
+                        // grï¿½ï¿½ere und und strukturell schwieriger zu fï¿½rbende Graphen benï¿½tig wird im im unendlichen gegen 0.
                         faerbeNaechstenKnoten.apply(IntStream.concat(IntStream.concat(Arrays.stream(aktuelleFaerbung).filter(farbe -> farbe != 0), IntStream.of(nSeltensteFarbeInFaerbung.apply(aktuelleFaerbung, 1, IntStream.of().toArray()))), Arrays.stream(aktuelleFaerbung).filter(farbe -> farbe == 0).skip(1)).toArray(), einGraph)
                 );
 
             }
 
-            if (//Test, ob die Färbung mit der 2.-seltensten Farbe funktioniert
+            if (//Test, ob die Fï¿½rbung mit der 2.-seltensten Farbe funktioniert
 
-                // die "Hilsfunktion" pruefeAktuelleFarbe liefert einen Boolschen Wert, der true ist, wenn es für
-                // den aktuell gefärbeten Knoten keinen angrenzenden Knoten gibt, der die Farbe hat, mit welcher der aktuell gefärbte
-                // Knoten gerdae gefärbt wird (hier die seltenste Farbe).
+                // die "Hilsfunktion" pruefeAktuelleFarbe liefert einen Boolschen Wert, der true ist, wenn es fï¿½r
+                // den aktuell gefï¿½rbeten Knoten keinen angrenzenden Knoten gibt, der die Farbe hat, mit welcher der aktuell gefï¿½rbte
+                // Knoten gerdae gefï¿½rbt wird (hier die seltenste Farbe).
 
                     pruefeAktuelleFarbe.apply(
-                            //Es werden als Input benötigt: (a), b), c))
-                            // a) das kompletter Färbungs-Array mit der Farbe, auf die gerade getestet wir
+                            //Es werden als Input benï¿½tigt: (a), b), c))
+                            // a) das kompletter Fï¿½rbungs-Array mit der Farbe, auf die gerade getestet wir
 
-                            //Bildlich gesprochen (natürlich nicht korrekt, da hier mit Streams operiert wird):
-                            //aktuelleFaerbung wird (durch Filter) "getrennt", die erste 0 (sie steht für den Knoten, der gerade gefärbt wird)
+                            //Bildlich gesprochen (natï¿½rlich nicht korrekt, da hier mit Streams operiert wird):
+                            //aktuelleFaerbung wird (durch Filter) "getrennt", die erste 0 (sie steht fï¿½r den Knoten, der gerade gefï¿½rbt wird)
                             //wird durch die aktuell am seltensten verwendete Farbe ersetzt, und aktuelleFaerbung wird wieder zusammengesetzt
                             IntStream.concat(
                                     // Es wird ein Stream, bestehend aus den bisher genutzten Farben, gefolgt von der bisher am seltensten verwendeten Farbe erzeugt
                                     IntStream.concat(
-                                            // Erzeugung eines Streams, der nur die Farben beinhaltet, mit denen schon Knoten gefärbt wurden
+                                            // Erzeugung eines Streams, der nur die Farben beinhaltet, mit denen schon Knoten gefï¿½rbt wurden
                                             Arrays.stream(
                                                     aktuelleFaerbung).
                                                     filter(farbe -> farbe != 0),
@@ -285,43 +285,43 @@ public class Funktional {
                                                     // berechnen der 2.-seltensten Farbe, die bisher genutzt wird
                                                     nSeltensteFarbeInFaerbung.apply(
                                                             aktuelleFaerbung, 2, IntStream.of().toArray()))),
-                                    // Es wird ein Stream aus 0en erzeugt, wobei jede 0 für einen noch nicht gefärbten Knoten steht (ausgenommen des Knotens der aktuell gefärbt werden soll)
+                                    // Es wird ein Stream aus 0en erzeugt, wobei jede 0 fï¿½r einen noch nicht gefï¿½rbten Knoten steht (ausgenommen des Knotens der aktuell gefï¿½rbt werden soll)
                                     Arrays.stream(aktuelleFaerbung)
                                             .filter(farbe -> farbe == 0)
                                             .skip(1))
                                     .toArray(),
 
 
-                            // b) Die Verbindungen des aktuell zu färbenden Knotens zu den Knoten, die bereits gefärbt sind
+                            // b) Die Verbindungen des aktuell zu fï¿½rbenden Knotens zu den Knoten, die bereits gefï¿½rbt sind
                             Arrays.stream(einGraph)
                                     //Hier liegt noch ein 2D-Array vor, daher werden alle Arrays, die im Array Graph vor dem, den aktuellen Knoten betreffenden Array, und nach diesem kommen
-                                    // im Stream übersprungen bzw. durch die Festlegung eines Limits abgeschnitten
+                                    // im Stream ï¿½bersprungen bzw. durch die Festlegung eines Limits abgeschnitten
                                     .skip(aktuellerKnoten
                                             .apply(aktuelleFaerbung))
                                     .limit(aktuellerKnoten.apply(aktuelleFaerbung))
                                     .flatMapToInt(x -> Arrays.stream(x))
-                                    //jetzt werden die Informationen über die noch nicht gefärbten Knoten und den Knoten selbst entfernt. Dies ist wichtig für die Abbruchbedingung von pruefeAktuelleFarbe
+                                    //jetzt werden die Informationen ï¿½ber die noch nicht gefï¿½rbten Knoten und den Knoten selbst entfernt. Dies ist wichtig fï¿½r die Abbruchbedingung von pruefeAktuelleFarbe
                                     .limit(aktuellerKnoten.apply(aktuelleFaerbung))
                                     .toArray(),
 
-                            // c) Die Farbe, in der der aktuelle Knoten gerade gefärbt wird
+                            // c) Die Farbe, in der der aktuelle Knoten gerade gefï¿½rbt wird
                             nSeltensteFarbeInFaerbung.apply(aktuelleFaerbung,2, IntStream.of().toArray()))
 
                             &&
 
-                            //Es wird rekursiv das Färbungs-Array angefordert, das sich ergibt, wenn man den gesamten Graphen auf Basis der Färbung des aktuellen
-                            // Knotens mit der am n-seltensten verwendeten Farbe durchfärbt und aus diesem wird ein Stream gemacht
+                            //Es wird rekursiv das Fï¿½rbungs-Array angefordert, das sich ergibt, wenn man den gesamten Graphen auf Basis der Fï¿½rbung des aktuellen
+                            // Knotens mit der am n-seltensten verwendeten Farbe durchfï¿½rbt und aus diesem wird ein Stream gemacht
                             Arrays.stream(faerbeNaechstenKnoten.apply(
 
-                                    // Bildlich gesprochen (natürlich nicht korrekt, da hier mit Streams operiert wird):
-                                    // aktuelleFaerbung wird (durch Filter) "getrennt", die erste 0 (sie steht für den Knoten, der gerade gefärbt wird)
+                                    // Bildlich gesprochen (natï¿½rlich nicht korrekt, da hier mit Streams operiert wird):
+                                    // aktuelleFaerbung wird (durch Filter) "getrennt", die erste 0 (sie steht fï¿½r den Knoten, der gerade gefï¿½rbt wird)
                                     // wird durch die aktuell am seltensten verwendete Farbe ersetzt, und aktuelleFaerbung wird wieder zusammengesetzt
                                     IntStream.concat(
 
                                             // Es wird ein Stream, bestehend aus den bisher genutzten Farben, gefolgt von der bisher am seltensten verwendeten Farbe erzeugt
                                             IntStream.concat(
 
-                                                    // Erzeugung eines Streams, der nur die Farben beinhaltet, mit denen schon Knoten gefärbt wurden
+                                                    // Erzeugung eines Streams, der nur die Farben beinhaltet, mit denen schon Knoten gefï¿½rbt wurden
                                                     Arrays.stream(aktuelleFaerbung)
                                                             .filter(farbe -> farbe != 0),
 
@@ -330,7 +330,7 @@ public class Funktional {
                                                             // berechnen der n-seltensten Farbe, die bisher genutzt wird
                                                             nSeltensteFarbeInFaerbung.apply(aktuelleFaerbung, 1, IntStream.of().toArray()))),
 
-                                            // Es wird ein Stream aus 0en erzeugt, wobei jede 0 für einen noch nicht gefärbten Knoten steht (ausgenommen des Knotens der aktuell gefärbt werden soll), erzeugt
+                                            // Es wird ein Stream aus 0en erzeugt, wobei jede 0 fï¿½r einen noch nicht gefï¿½rbten Knoten steht (ausgenommen des Knotens der aktuell gefï¿½rbt werden soll), erzeugt
                                             Arrays.stream(aktuelleFaerbung)
                                                     .filter(farbe -> farbe == 0)
                                                     .skip(1))
@@ -339,59 +339,59 @@ public class Funktional {
 
                                     einGraph)
 
-                                    //Muss vor folgendem Hintergrund betrachtet werden: kann die Färbung eines Knotens nicht erfolgreich durchgeführt werden,
-                                    // wird das Färbungs-Array, mit dem als Übergabeparameter die Funktion aufgerufen wurde, wieder zurückgegeben.
-                                    // Die Färbung war also nur genau dann erfolgreich, wenn das Färbungs-Array komplett mit Farben gefüllt wurde und nicht zwischenzeitig
-                                    //zurückgegeben wurde.
+                                    //Muss vor folgendem Hintergrund betrachtet werden: kann die Fï¿½rbung eines Knotens nicht erfolgreich durchgefï¿½hrt werden,
+                                    // wird das Fï¿½rbungs-Array, mit dem als ï¿½bergabeparameter die Funktion aufgerufen wurde, wieder zurï¿½ckgegeben.
+                                    // Die Fï¿½rbung war also nur genau dann erfolgreich, wenn das Fï¿½rbungs-Array komplett mit Farben gefï¿½llt wurde und nicht zwischenzeitig
+                                    //zurï¿½ckgegeben wurde.
 
 
                             ).filter(x -> x==0).count()==0
 
             )
-            // return-Anweisung wird nur Ausgeführt, wenn
+            // return-Anweisung wird nur Ausgefï¿½hrt, wenn
             //
-            //a) Prüfung, ob alle zukünftigen Schritte auf Basis des aktuellen Färbungs-Schritts funktionieren
+            //a) Prï¿½fung, ob alle zukï¿½nftigen Schritte auf Basis des aktuellen Fï¿½rbungs-Schritts funktionieren
             //
             //                  und
             //
-            //b) Prüfung, ob die Farbe, mit der in diesem Schritt gefärbt werden soll (hier ist es die seltenste Farbe) nicht dieselbe, wie die, eines angrenzenden Knotens ist
+            //b) Prï¿½fung, ob die Farbe, mit der in diesem Schritt gefï¿½rbt werden soll (hier ist es die seltenste Farbe) nicht dieselbe, wie die, eines angrenzenden Knotens ist
             //
             //mit true abgeschlossen wurden.
 
             {
-                // rekursiver Aufruf, es wird das komplett fertig gefärbte Färbungs-Array (von dem wir uns aufgrund der beiden zuvor geprüften Bedingungen sicher sein können,
-                // dass es eine korrekte Färbungs-Möglichkeit darstellt) zurückgegeben.
+                // rekursiver Aufruf, es wird das komplett fertig gefï¿½rbte Fï¿½rbungs-Array (von dem wir uns aufgrund der beiden zuvor geprï¿½ften Bedingungen sicher sein kï¿½nnen,
+                // dass es eine korrekte Fï¿½rbungs-Mï¿½glichkeit darstellt) zurï¿½ckgegeben.
 
 
                 return (
 
-                        // Gleicher Code wie in der if-Bedingung (erste Aussage der &&-Verknüpfung, nur ohne equals), daher nur kompakter geschrieben und unkommentiert.
-                        // Um uns an das Prinzip der Funktionalen Programmierung, innerhalb der Funktionen keine Variablen außer den Übergabeparametern zu nutzen,
-                        // müssen wir die Funktion faerbeNaechstenKnoten zweimal aufrufen einmal zuvor zum überprüfen und nun zur tatsächlichen Berechnung und
-                        // anschließenden Rückgabe. Da pro Knoten nur ein zusätzlicher Aufruf von faerbeNaechstenKnoten erforderlich ist, läuft die zusätzliche Laufzeit, die für
-                        // größere und und strukturell schwieriger zu färbende Graphen benötig wird im im unendlichen gegen 0.
+                        // Gleicher Code wie in der if-Bedingung (erste Aussage der &&-Verknï¿½pfung, nur ohne equals), daher nur kompakter geschrieben und unkommentiert.
+                        // Um uns an das Prinzip der Funktionalen Programmierung, innerhalb der Funktionen keine Variablen auï¿½er den ï¿½bergabeparametern zu nutzen,
+                        // mï¿½ssen wir die Funktion faerbeNaechstenKnoten zweimal aufrufen einmal zuvor zum ï¿½berprï¿½fen und nun zur tatsï¿½chlichen Berechnung und
+                        // anschlieï¿½enden Rï¿½ckgabe. Da pro Knoten nur ein zusï¿½tzlicher Aufruf von faerbeNaechstenKnoten erforderlich ist, lï¿½uft die zusï¿½tzliche Laufzeit, die fï¿½r
+                        // grï¿½ï¿½ere und und strukturell schwieriger zu fï¿½rbende Graphen benï¿½tig wird im im unendlichen gegen 0.
                         faerbeNaechstenKnoten.apply(IntStream.concat(IntStream.concat(Arrays.stream(aktuelleFaerbung).filter(farbe -> farbe != 0), IntStream.of(nSeltensteFarbeInFaerbung.apply(aktuelleFaerbung, 2, IntStream.of().toArray()))), Arrays.stream(aktuelleFaerbung).filter(farbe -> farbe == 0).skip(1)).toArray(), einGraph)
                 );
 
             }
 
-            if (//Test, ob die Färbung mit der 3.-seltensten Farbe funktioniert
+            if (//Test, ob die Fï¿½rbung mit der 3.-seltensten Farbe funktioniert
 
-                // die "Hilsfunktion" pruefeAktuelleFarbe liefert einen Boolschen Wert, der true ist, wenn es für
-                // den aktuell gefärbeten Knoten keinen angrenzenden Knoten gibt, der die Farbe hat, mit welcher der aktuell gefärbte
-                // Knoten gerdae gefärbt wird (hier die seltenste Farbe).
+                // die "Hilsfunktion" pruefeAktuelleFarbe liefert einen Boolschen Wert, der true ist, wenn es fï¿½r
+                // den aktuell gefï¿½rbeten Knoten keinen angrenzenden Knoten gibt, der die Farbe hat, mit welcher der aktuell gefï¿½rbte
+                // Knoten gerdae gefï¿½rbt wird (hier die seltenste Farbe).
 
                     pruefeAktuelleFarbe.apply(
-                            //Es werden als Input benötigt: (a), b), c))
-                            // a) das kompletter Färbungs-Array mit der Farbe, auf die gerade getestet wir
+                            //Es werden als Input benï¿½tigt: (a), b), c))
+                            // a) das kompletter Fï¿½rbungs-Array mit der Farbe, auf die gerade getestet wir
 
-                            //Bildlich gesprochen (natürlich nicht korrekt, da hier mit Streams operiert wird):
-                            //aktuelleFaerbung wird (durch Filter) "getrennt", die erste 0 (sie steht für den Knoten, der gerade gefärbt wird)
+                            //Bildlich gesprochen (natï¿½rlich nicht korrekt, da hier mit Streams operiert wird):
+                            //aktuelleFaerbung wird (durch Filter) "getrennt", die erste 0 (sie steht fï¿½r den Knoten, der gerade gefï¿½rbt wird)
                             //wird durch die aktuell am seltensten verwendete Farbe ersetzt, und aktuelleFaerbung wird wieder zusammengesetzt
                             IntStream.concat(
                                     // Es wird ein Stream, bestehend aus den bisher genutzten Farben, gefolgt von der bisher am seltensten verwendeten Farbe erzeugt
                                     IntStream.concat(
-                                            // Erzeugung eines Streams, der nur die Farben beinhaltet, mit denen schon Knoten gefärbt wurden
+                                            // Erzeugung eines Streams, der nur die Farben beinhaltet, mit denen schon Knoten gefï¿½rbt wurden
                                             Arrays.stream(
                                                     aktuelleFaerbung).
                                                     filter(farbe -> farbe != 0),
@@ -400,43 +400,43 @@ public class Funktional {
                                                     // berechnen der seltensten (da der 2 Parameter gleich 1 ist) Farbe, die bisher genutzt wird
                                                     nSeltensteFarbeInFaerbung.apply(
                                                             aktuelleFaerbung, 3, IntStream.of().toArray()))),
-                                    // Es wird ein Stream aus 0en erzeugt, wobei jede 0 für einen noch nicht gefärbten Knoten steht (ausgenommen des Knotens der aktuell gefärbt werden soll)
+                                    // Es wird ein Stream aus 0en erzeugt, wobei jede 0 fï¿½r einen noch nicht gefï¿½rbten Knoten steht (ausgenommen des Knotens der aktuell gefï¿½rbt werden soll)
                                     Arrays.stream(aktuelleFaerbung)
                                             .filter(farbe -> farbe == 0)
                                             .skip(1))
                                     .toArray(),
 
 
-                            // b) Die Verbindungen des aktuell zu färbenden Knotens zu den Knoten, die bereits gefärbt sind
+                            // b) Die Verbindungen des aktuell zu fï¿½rbenden Knotens zu den Knoten, die bereits gefï¿½rbt sind
                             Arrays.stream(einGraph)
                                     //Hier liegt noch ein 2D-Array vor, daher werden alle Arrays, die im Array Graph vor dem, den aktuellen Knoten betreffenden Array, und nach diesem kommen
-                                    // im Stream übersprungen bzw. durch die Festlegung eines Limits abgeschnitten
+                                    // im Stream ï¿½bersprungen bzw. durch die Festlegung eines Limits abgeschnitten
                                     .skip(aktuellerKnoten
                                             .apply(aktuelleFaerbung))
                                     .limit(aktuellerKnoten.apply(aktuelleFaerbung))
                                     .flatMapToInt(x -> Arrays.stream(x))
-                                    //jetzt werden die Informationen über die noch nicht gefärbten Knoten und den Knoten selbst entfernt. Dies ist wichtig für die Abbruchbedingung von pruefeAktuelleFarbe
+                                    //jetzt werden die Informationen ï¿½ber die noch nicht gefï¿½rbten Knoten und den Knoten selbst entfernt. Dies ist wichtig fï¿½r die Abbruchbedingung von pruefeAktuelleFarbe
                                     .limit(aktuellerKnoten.apply(aktuelleFaerbung))
                                     .toArray(),
 
-                            // c) Die Farbe, in der der aktuelle Knoten gerade gefärbt wird
+                            // c) Die Farbe, in der der aktuelle Knoten gerade gefï¿½rbt wird
                             nSeltensteFarbeInFaerbung.apply(aktuelleFaerbung,3, IntStream.of().toArray()))
 
                             &&
 
-                            //Es wird rekursiv das Färbungs-Array angefordert, das sich ergibt, wenn man den gesamten Graphen auf Basis der Färbung des aktuellen
-                            // Knotens mit der am n-seltensten verwendeten Farbe durchfärbt und aus diesem wird ein Stream gemacht
+                            //Es wird rekursiv das Fï¿½rbungs-Array angefordert, das sich ergibt, wenn man den gesamten Graphen auf Basis der Fï¿½rbung des aktuellen
+                            // Knotens mit der am n-seltensten verwendeten Farbe durchfï¿½rbt und aus diesem wird ein Stream gemacht
                             Arrays.stream(faerbeNaechstenKnoten.apply(
 
-                                    // Bildlich gesprochen (natürlich nicht korrekt, da hier mit Streams operiert wird):
-                                    // aktuelleFaerbung wird (durch Filter) "getrennt", die erste 0 (sie steht für den Knoten, der gerade gefärbt wird)
+                                    // Bildlich gesprochen (natï¿½rlich nicht korrekt, da hier mit Streams operiert wird):
+                                    // aktuelleFaerbung wird (durch Filter) "getrennt", die erste 0 (sie steht fï¿½r den Knoten, der gerade gefï¿½rbt wird)
                                     // wird durch die aktuell am seltensten verwendete Farbe ersetzt, und aktuelleFaerbung wird wieder zusammengesetzt
                                     IntStream.concat(
 
                                             // Es wird ein Stream, bestehend aus den bisher genutzten Farben, gefolgt von der bisher am seltensten verwendeten Farbe erzeugt
                                             IntStream.concat(
 
-                                                    // Erzeugung eines Streams, der nur die Farben beinhaltet, mit denen schon Knoten gefärbt wurden
+                                                    // Erzeugung eines Streams, der nur die Farben beinhaltet, mit denen schon Knoten gefï¿½rbt wurden
                                                     Arrays.stream(aktuelleFaerbung)
                                                             .filter(farbe -> farbe != 0),
 
@@ -445,7 +445,7 @@ public class Funktional {
                                                             // berechnen der n-seltensten Farbe, die bisher genutzt wird
                                                             nSeltensteFarbeInFaerbung.apply(aktuelleFaerbung, 3, IntStream.of().toArray()))),
 
-                                            // Es wird ein Stream aus 0en erzeugt, wobei jede 0 für einen noch nicht gefärbten Knoten steht (ausgenommen des Knotens der aktuell gefärbt werden soll), erzeugt
+                                            // Es wird ein Stream aus 0en erzeugt, wobei jede 0 fï¿½r einen noch nicht gefï¿½rbten Knoten steht (ausgenommen des Knotens der aktuell gefï¿½rbt werden soll), erzeugt
                                             Arrays.stream(aktuelleFaerbung)
                                                     .filter(farbe -> farbe == 0)
                                                     .skip(1))
@@ -454,10 +454,10 @@ public class Funktional {
 
                                     einGraph)
 
-                                    //Muss vor folgendem Hintergrund betrachtet werden: kann die Färbung eines Knotens nicht erfolgreich durchgeführt werden,
-                                    // wird das Färbungs-Array, mit dem als Übergabeparameter die Funktion aufgerufen wurde, wieder zurückgegeben.
-                                    // Die Färbung war also nur genau dann erfolgreich, wenn das Färbungs-Array komplett mit Farben gefüllt wurde und nicht zwischenzeitig
-                                    //zurückgegeben wurde.
+                                    //Muss vor folgendem Hintergrund betrachtet werden: kann die Fï¿½rbung eines Knotens nicht erfolgreich durchgefï¿½hrt werden,
+                                    // wird das Fï¿½rbungs-Array, mit dem als ï¿½bergabeparameter die Funktion aufgerufen wurde, wieder zurï¿½ckgegeben.
+                                    // Die Fï¿½rbung war also nur genau dann erfolgreich, wenn das Fï¿½rbungs-Array komplett mit Farben gefï¿½llt wurde und nicht zwischenzeitig
+                                    //zurï¿½ckgegeben wurde.
 
                             ).filter(x -> x==0).count()==0
 
@@ -465,50 +465,50 @@ public class Funktional {
 
 
 
-            // return-Anweisung wird nur Ausgeführt, wenn
+            // return-Anweisung wird nur Ausgefï¿½hrt, wenn
             //
-            //a) Prüfung, ob alle zukünftigen Schritte auf Basis des aktuellen Färbungs-Schritts funktionieren
+            //a) Prï¿½fung, ob alle zukï¿½nftigen Schritte auf Basis des aktuellen Fï¿½rbungs-Schritts funktionieren
             //
             //                  und
             //
-            //b) Prüfung, ob die Farbe, mit der in diesem Schritt gefärbt werden soll (hier ist es die seltenste Farbe) nicht dieselbe, wie die, eines angrenzenden Knotens ist
+            //b) Prï¿½fung, ob die Farbe, mit der in diesem Schritt gefï¿½rbt werden soll (hier ist es die seltenste Farbe) nicht dieselbe, wie die, eines angrenzenden Knotens ist
             //
             //mit true abgeschlossen wurden.
 
             {
-                // rekursiver Aufruf, es wird das komplett fertig gefärbte Färbungs-Array (von dem wir uns aufgrund der beiden zuvor geprüften Bedingungen sicher sein können,
-                // dass es eine korrekte Färbungs-Möglichkeit darstellt) zurückgegeben.
+                // rekursiver Aufruf, es wird das komplett fertig gefï¿½rbte Fï¿½rbungs-Array (von dem wir uns aufgrund der beiden zuvor geprï¿½ften Bedingungen sicher sein kï¿½nnen,
+                // dass es eine korrekte Fï¿½rbungs-Mï¿½glichkeit darstellt) zurï¿½ckgegeben.
 
 
                 return (
 
-                        // Gleicher Code wie in der if-Bedingung (erste Aussage der &&-Verknüpfung), daher nur kompakter geschrieben und unkommentiert.
-                        // Um uns an das Prinzip der Funktionalen Programmierung, innerhalb der Funktionen keine Variablen außer den Übergabeparametern zu nutzen,
-                        // müssen wir die Funktion faerbeNaechstenKnoten zweimal aufrufen einmal zuvor zum überprüfen und nun zur tatsächlichen Berechnung und
-                        // anschließenden Rückgabe. Da pro Knoten nur ein zusätzlicher Aufruf von faerbeNaechstenKnoten erforderlich ist, läuft die zusätzliche Laufzeit, die für
-                        // größere und und strukturell schwieriger zu färbende Graphen benötig wird im im unendlichen gegen 0.
+                        // Gleicher Code wie in der if-Bedingung (erste Aussage der &&-Verknï¿½pfung), daher nur kompakter geschrieben und unkommentiert.
+                        // Um uns an das Prinzip der Funktionalen Programmierung, innerhalb der Funktionen keine Variablen auï¿½er den ï¿½bergabeparametern zu nutzen,
+                        // mï¿½ssen wir die Funktion faerbeNaechstenKnoten zweimal aufrufen einmal zuvor zum ï¿½berprï¿½fen und nun zur tatsï¿½chlichen Berechnung und
+                        // anschlieï¿½enden Rï¿½ckgabe. Da pro Knoten nur ein zusï¿½tzlicher Aufruf von faerbeNaechstenKnoten erforderlich ist, lï¿½uft die zusï¿½tzliche Laufzeit, die fï¿½r
+                        // grï¿½ï¿½ere und und strukturell schwieriger zu fï¿½rbende Graphen benï¿½tig wird im im unendlichen gegen 0.
                         faerbeNaechstenKnoten.apply(IntStream.concat(IntStream.concat(Arrays.stream(aktuelleFaerbung).filter(farbe -> farbe != 0), IntStream.of(nSeltensteFarbeInFaerbung.apply(aktuelleFaerbung, 3,IntStream.of().toArray()))), Arrays.stream(aktuelleFaerbung).filter(farbe -> farbe == 0).skip(1)).toArray(), einGraph)
                 );
 
             }
 
-            if (//Test, ob die Färbung mit der 4.-seltensten Farbe funktioniert
+            if (//Test, ob die Fï¿½rbung mit der 4.-seltensten Farbe funktioniert
 
-                // die "Hilsfunktion" pruefeAktuelleFarbe liefert einen Boolschen Wert, der true ist, wenn es für
-                // den aktuell gefärbeten Knoten keinen angrenzenden Knoten gibt, der die Farbe hat, mit welcher der aktuell gefärbte
-                // Knoten gerdae gefärbt wird (hier die seltenste Farbe).
+                // die "Hilsfunktion" pruefeAktuelleFarbe liefert einen Boolschen Wert, der true ist, wenn es fï¿½r
+                // den aktuell gefï¿½rbeten Knoten keinen angrenzenden Knoten gibt, der die Farbe hat, mit welcher der aktuell gefï¿½rbte
+                // Knoten gerdae gefï¿½rbt wird (hier die seltenste Farbe).
 
                     pruefeAktuelleFarbe.apply(
-                            //Es werden als Input benötigt: (a), b), c))
-                            // a) das kompletter Färbungs-Array mit der Farbe, auf die gerade getestet wir
+                            //Es werden als Input benï¿½tigt: (a), b), c))
+                            // a) das kompletter Fï¿½rbungs-Array mit der Farbe, auf die gerade getestet wir
 
-                            //Bildlich gesprochen (natürlich nicht korrekt, da hier mit Streams operiert wird):
-                            //aktuelleFaerbung wird (durch Filter) "getrennt", die erste 0 (sie steht für den Knoten, der gerade gefärbt wird)
+                            //Bildlich gesprochen (natï¿½rlich nicht korrekt, da hier mit Streams operiert wird):
+                            //aktuelleFaerbung wird (durch Filter) "getrennt", die erste 0 (sie steht fï¿½r den Knoten, der gerade gefï¿½rbt wird)
                             //wird durch die aktuell am seltensten verwendete Farbe ersetzt, und aktuelleFaerbung wird wieder zusammengesetzt
                             IntStream.concat(
                                     // Es wird ein Stream, bestehend aus den bisher genutzten Farben, gefolgt von der bisher am seltensten verwendeten Farbe erzeugt
                                     IntStream.concat(
-                                            // Erzeugung eines Streams, der nur die Farben beinhaltet, mit denen schon Knoten gefärbt wurden
+                                            // Erzeugung eines Streams, der nur die Farben beinhaltet, mit denen schon Knoten gefï¿½rbt wurden
                                             Arrays.stream(
                                                     aktuelleFaerbung).
                                                     filter(farbe -> farbe != 0),
@@ -517,45 +517,45 @@ public class Funktional {
                                                     // berechnen der seltensten (da der 2 Parameter gleich 1 ist) Farbe, die bisher genutzt wird
                                                     nSeltensteFarbeInFaerbung.apply(
                                                             aktuelleFaerbung, 4,IntStream.of().toArray()))),
-                                    // Es wird ein Stream aus 0en erzeugt, wobei jede 0 für einen noch nicht gefärbten Knoten steht (ausgenommen des Knotens der aktuell gefärbt werden soll)
+                                    // Es wird ein Stream aus 0en erzeugt, wobei jede 0 fï¿½r einen noch nicht gefï¿½rbten Knoten steht (ausgenommen des Knotens der aktuell gefï¿½rbt werden soll)
                                     Arrays.stream(aktuelleFaerbung)
                                             .filter(farbe -> farbe == 0)
                                             .skip(1))
                                     .toArray(),
 
 
-                            // b) Die Verbindungen des aktuell zu färbenden Knotens zu den Knoten, die bereits gefärbt sind
+                            // b) Die Verbindungen des aktuell zu fï¿½rbenden Knotens zu den Knoten, die bereits gefï¿½rbt sind
                             Arrays.stream(einGraph)
                                     //Hier liegt noch ein 2D-Array vor, daher werden alle Arrays, die im Array Graph vor dem, den aktuellen Knoten betreffenden Array, und nach diesem kommen
-                                    // im Stream übersprungen bzw. durch die Festlegung eines Limits abgeschnitten
+                                    // im Stream ï¿½bersprungen bzw. durch die Festlegung eines Limits abgeschnitten
                                     .skip(aktuellerKnoten
                                             .apply(aktuelleFaerbung))
                                     .limit(aktuellerKnoten.apply(aktuelleFaerbung))
                                     .flatMapToInt(x -> Arrays.stream(x))
-                                    //jetzt werden die Informationen über die noch nicht gefärbten Knoten und den Knoten selbst entfernt. Dies ist wichtig für die Abbruchbedingung von pruefeAktuelleFarbe
+                                    //jetzt werden die Informationen ï¿½ber die noch nicht gefï¿½rbten Knoten und den Knoten selbst entfernt. Dies ist wichtig fï¿½r die Abbruchbedingung von pruefeAktuelleFarbe
                                     .limit(aktuellerKnoten.apply(aktuelleFaerbung))
                                     .toArray(),
 
-                            // c) Die Farbe, in der der aktuelle Knoten gerade gefärbt wird
+                            // c) Die Farbe, in der der aktuelle Knoten gerade gefï¿½rbt wird
                             nSeltensteFarbeInFaerbung.apply(aktuelleFaerbung,4,IntStream.of().toArray()))
 
                             &&
 
 
 
-                            //Es wird rekursiv das Färbungs-Array angefordert, das sich ergibt, wenn man den gesamten Graphen auf Basis der Färbung des aktuellen
-                            // Knotens mit der am n-seltensten verwendeten Farbe durchfärbt und aus diesem wird ein Stream gemacht
+                            //Es wird rekursiv das Fï¿½rbungs-Array angefordert, das sich ergibt, wenn man den gesamten Graphen auf Basis der Fï¿½rbung des aktuellen
+                            // Knotens mit der am n-seltensten verwendeten Farbe durchfï¿½rbt und aus diesem wird ein Stream gemacht
                             Arrays.stream(faerbeNaechstenKnoten.apply(
 
-                                    // Bildlich gesprochen (natürlich nicht korrekt, da hier mit Streams operiert wird):
-                                    // aktuelleFaerbung wird (durch Filter) "getrennt", die erste 0 (sie steht für den Knoten, der gerade gefärbt wird)
+                                    // Bildlich gesprochen (natï¿½rlich nicht korrekt, da hier mit Streams operiert wird):
+                                    // aktuelleFaerbung wird (durch Filter) "getrennt", die erste 0 (sie steht fï¿½r den Knoten, der gerade gefï¿½rbt wird)
                                     // wird durch die aktuell am seltensten verwendete Farbe ersetzt, und aktuelleFaerbung wird wieder zusammengesetzt
                                     IntStream.concat(
 
                                             // Es wird ein Stream, bestehend aus den bisher genutzten Farben, gefolgt von der bisher am seltensten verwendeten Farbe erzeugt
                                             IntStream.concat(
 
-                                                    // Erzeugung eines Streams, der nur die Farben beinhaltet, mit denen schon Knoten gefärbt wurden
+                                                    // Erzeugung eines Streams, der nur die Farben beinhaltet, mit denen schon Knoten gefï¿½rbt wurden
                                                     Arrays.stream(aktuelleFaerbung)
                                                             .filter(farbe -> farbe != 0),
 
@@ -564,7 +564,7 @@ public class Funktional {
                                                             // berechnen der n-seltensten Farbe, die bisher genutzt wird
                                                             nSeltensteFarbeInFaerbung.apply(aktuelleFaerbung, 4,IntStream.of().toArray()))),
 
-                                            // Es wird ein Stream aus 0en erzeugt, wobei jede 0 für einen noch nicht gefärbten Knoten steht (ausgenommen des Knotens der aktuell gefärbt werden soll), erzeugt
+                                            // Es wird ein Stream aus 0en erzeugt, wobei jede 0 fï¿½r einen noch nicht gefï¿½rbten Knoten steht (ausgenommen des Knotens der aktuell gefï¿½rbt werden soll), erzeugt
                                             Arrays.stream(aktuelleFaerbung)
                                                     .filter(farbe -> farbe == 0)
                                                     .skip(1))
@@ -573,10 +573,10 @@ public class Funktional {
 
                                     einGraph)
 
-                                    //Muss vor folgendem Hintergrund betrachtet werden: kann die Färbung eines Knotens nicht erfolgreich durchgeführt werden,
-                                    // wird das Färbungs-Array, mit dem als Übergabeparameter die Funktion aufgerufen wurde, wieder zurückgegeben.
-                                    // Die Färbung war also nur genau dann erfolgreich, wenn das Färbungs-Array komplett mit Farben gefüllt wurde und nicht zwischenzeitig
-                                    //zurückgegeben wurde.
+                                    //Muss vor folgendem Hintergrund betrachtet werden: kann die Fï¿½rbung eines Knotens nicht erfolgreich durchgefï¿½hrt werden,
+                                    // wird das Fï¿½rbungs-Array, mit dem als ï¿½bergabeparameter die Funktion aufgerufen wurde, wieder zurï¿½ckgegeben.
+                                    // Die Fï¿½rbung war also nur genau dann erfolgreich, wenn das Fï¿½rbungs-Array komplett mit Farben gefï¿½llt wurde und nicht zwischenzeitig
+                                    //zurï¿½ckgegeben wurde.
 
                             ).filter(x -> x==0).count()==0
 
@@ -584,52 +584,52 @@ public class Funktional {
 
 
 
-            // return-Anweisung wird nur Ausgeführt, wenn
+            // return-Anweisung wird nur Ausgefï¿½hrt, wenn
             //
-            //a) Prüfung, ob alle zukünftigen Schritte auf Basis des aktuellen Färbungs-Schritts funktionieren
+            //a) Prï¿½fung, ob alle zukï¿½nftigen Schritte auf Basis des aktuellen Fï¿½rbungs-Schritts funktionieren
             //
             //                  und
             //
-            //b) Prüfung, ob die Farbe, mit der in diesem Schritt gefärbt werden soll (hier ist es die seltenste Farbe) nicht dieselbe, wie die, eines angrenzenden Knotens ist
+            //b) Prï¿½fung, ob die Farbe, mit der in diesem Schritt gefï¿½rbt werden soll (hier ist es die seltenste Farbe) nicht dieselbe, wie die, eines angrenzenden Knotens ist
             //
             //mit true abgeschlossen wurden.
 
             {
-                // rekursiver Aufruf, es wird das komplett fertig gefärbte Färbungs-Array (von dem wir uns aufgrund der beiden zuvor geprüften Bedingungen sicher sein können,
-                // dass es eine korrekte Färbungs-Möglichkeit darstellt) zurückgegeben.
+                // rekursiver Aufruf, es wird das komplett fertig gefï¿½rbte Fï¿½rbungs-Array (von dem wir uns aufgrund der beiden zuvor geprï¿½ften Bedingungen sicher sein kï¿½nnen,
+                // dass es eine korrekte Fï¿½rbungs-Mï¿½glichkeit darstellt) zurï¿½ckgegeben.
 
 
                 return (
 
-                        // Gleicher Code wie in der if-Bedingung (erste Aussage der &&-Verknüpfung, daher nur kompakter geschrieben und unkommentiert.
-                        // Um uns an das Prinzip der Funktionalen Programmierung, innerhalb der Funktionen keine Variablen außer den Übergabeparametern zu nutzen,
-                        // müssen wir die Funktion faerbeNaechstenKnoten zweimal aufrufen einmal zuvor zum überprüfen und nun zur tatsächlichen Berechnung und
-                        // anschließenden Rückgabe. Da pro Knoten nur ein zusätzlicher Aufruf von faerbeNaechstenKnoten erforderlich ist, läuft die zusätzliche Laufzeit, die für
-                        // größere und und strukturell schwieriger zu färbende Graphen benötig wird im im unendlichen gegen 0.
+                        // Gleicher Code wie in der if-Bedingung (erste Aussage der &&-Verknï¿½pfung, daher nur kompakter geschrieben und unkommentiert.
+                        // Um uns an das Prinzip der Funktionalen Programmierung, innerhalb der Funktionen keine Variablen auï¿½er den ï¿½bergabeparametern zu nutzen,
+                        // mï¿½ssen wir die Funktion faerbeNaechstenKnoten zweimal aufrufen einmal zuvor zum ï¿½berprï¿½fen und nun zur tatsï¿½chlichen Berechnung und
+                        // anschlieï¿½enden Rï¿½ckgabe. Da pro Knoten nur ein zusï¿½tzlicher Aufruf von faerbeNaechstenKnoten erforderlich ist, lï¿½uft die zusï¿½tzliche Laufzeit, die fï¿½r
+                        // grï¿½ï¿½ere und und strukturell schwieriger zu fï¿½rbende Graphen benï¿½tig wird im im unendlichen gegen 0.
                         faerbeNaechstenKnoten.apply(IntStream.concat(IntStream.concat(Arrays.stream(aktuelleFaerbung).filter(farbe -> farbe != 0), IntStream.of(nSeltensteFarbeInFaerbung.apply(aktuelleFaerbung, 4,IntStream.of().toArray()))), Arrays.stream(aktuelleFaerbung).filter(farbe -> farbe == 0).skip(1)).toArray(), einGraph)
                 );
 
             }
 
-            // Für den Fall, dass keine Färbung des Konten mit einer der 4 Farben erfolgreich getestet und dann auch angewendet wurde, wird das Färungs-Array aus der vorherigen
-            // Rekursionsebene zurückgegeben. Dazu muss die Farbe des zuletzt gefärbten Elements "gelöscht" werden, damit in der verhergehenden Reskursionebene direkt weitere Färbungen getestet
-            // werden können
+            // Fï¿½r den Fall, dass keine Fï¿½rbung des Konten mit einer der 4 Farben erfolgreich getestet und dann auch angewendet wurde, wird das Fï¿½rungs-Array aus der vorherigen
+            // Rekursionsebene zurï¿½ckgegeben. Dazu muss die Farbe des zuletzt gefï¿½rbten Elements "gelï¿½scht" werden, damit in der verhergehenden Reskursionebene direkt weitere Fï¿½rbungen getestet
+            // werden kï¿½nnen
             return (
                     IntStream.concat(
 
 
                             IntStream.concat(
 
-                                    // Erzeugung eines Streams, der nur die Farben beinhaltet, mit denen schon Knoten gefärbt wurden
+                                    // Erzeugung eines Streams, der nur die Farben beinhaltet, mit denen schon Knoten gefï¿½rbt wurden
                                     Arrays.stream(aktuelleFaerbung)
                                             .filter(farbe -> farbe != 0),
 
 
                                     IntStream.of(
-                                            //Füge 0 ein (als ersatz für die vorherige Farbe)
+                                            //Fï¿½ge 0 ein (als ersatz fï¿½r die vorherige Farbe)
                                             0)),
 
-                            // Noch nicht gefärbte Knoten werden durch 0en dargestellt and zum Stream hinzugefügt
+                            // Noch nicht gefï¿½rbte Knoten werden durch 0en dargestellt and zum Stream hinzugefï¿½gt
                             Arrays.stream(aktuelleFaerbung)
                                     .filter(farbe -> farbe == 0)
                                     .skip(1))
