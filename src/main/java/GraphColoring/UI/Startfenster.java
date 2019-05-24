@@ -4,8 +4,11 @@ import GraphColoring.Main;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.NumberFormatter;
 
 import java.awt.*;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.Random;
 
 public class Startfenster extends JFrame{
@@ -38,8 +41,15 @@ public class Startfenster extends JFrame{
 
         pane.add(center, BorderLayout.CENTER);
         //Befüllung center
-        final JSpinner Knoten = new JSpinner(Anzahl);
-        center.add(Knoten);
+
+		NumberFormat nmf = new DecimalFormat("000");
+        NumberFormatter nf = new NumberFormatter(nmf);
+        nf.setAllowsInvalid(false);
+        nf.setOverwriteMode(true);
+        JFormattedTextField KnotenAnzahlFeld = new JFormattedTextField(nf);
+		//breite des Textfeldes setzen
+		KnotenAnzahlFeld.setColumns(3);
+		center.add(KnotenAnzahlFeld);
         JLabel oder = new JLabel("oder");
         center.add(oder);
         JButton zufaellig = new JButton("zuf\u00e4llig");
@@ -55,12 +65,12 @@ public class Startfenster extends JFrame{
         zufaellig.addActionListener(e -> {
             Random random = new Random();
             Zufallszahl = random.nextInt(17) + 4;
-            Knoten.setValue(Zufallszahl);
+            KnotenAnzahlFeld.setValue(Zufallszahl);
         });
 
         //Überleitung auf da nächste Fenster
         erzeugen.addActionListener(e -> {
-            AnzahlKnoten = (Integer)Knoten.getValue();
+            AnzahlKnoten = (Integer)KnotenAnzahlFeld.getValue();
             if (AnzahlKnoten < 4) {
             	JOptionPane.showMessageDialog(null, "Mit einem Graphen, der nur " + AnzahlKnoten + " Knoten hat macht das ganze doch gar keinen Spaß! ", "Achtung", JOptionPane.INFORMATION_MESSAGE);
             }else {
