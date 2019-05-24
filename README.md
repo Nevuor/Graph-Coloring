@@ -11,7 +11,7 @@ Bei dem Problem der Graphenfärbung geht es darum jeder Kante eines Graphen eine
 ![Alt-Text](https://github.com/Lucab2k/Graphenf-rbungUI/blob/master/Graphenf%C3%A4rbung/Klassendiagramm.png?raw=true "Klassendiagramm")
 ### Aufbau der UI:
 
-##### landing Window
+##### Startfenster
 Das landing Windows dient als Eingabemaske für die Anzahl der Kanten des Graphen. Neben der Eingabe über ein FormattedTextField gibt es einen Button um eine zufällige Zahl in das FormattedTextField zu schreiben.
 Mit dem Button "erzeugen" wird das Fenster geschlossen und ein Objekt der Klasse "Hauptfenster" erzeugt.
 Weitere Features:
