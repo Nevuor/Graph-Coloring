@@ -43,4 +43,7 @@ Falls keine der vier Farben möglich ist, so wird das Färbungs-Array an die vor
 Ist der Testlauf erfolgreich abgeschlossen, so wird der Knoten auch tatsächlich gefärbt, indem an die vorhergehende Rekursionsstufe das Ergebnis des rekursiven Funktionsaufrufes faerbeNaechstenKnoten<int[], int[][]>, übergeben wird, sodass, wenn der Graph bis zum letzten Knoten, also auf die tiefste Rekursionsstufe gefärbt worden ist, diese Färbung als Färbungs-Array bis auf die höchste Rekursionsstufe weitergereicht wird. Die Aufgaben und detaillierten Funktionsweisen aller Funktionen sind durch Kommentare direkt im Quellcode beschrieben.
 
 
-### Sequentieller Algorithmus:
+### Objektorientierter Algorithmus:
+Der Algorithmus sollte das Problem mit Hilfe von Backtracking lösen.
+Die FaerbungsUtil wurde, vor allem der rekursive Aufruf teilweise mit Hilfe von https://www.geeksforgeeks.org/m-coloring-problem-backtracking-5/ erstellt, jedoch weiter geführt.
+Die genauen Abläufe und Informationen sind im Code als Kommentare hinterlegt.
