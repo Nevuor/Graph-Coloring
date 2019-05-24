@@ -120,7 +120,7 @@ public class Hauptfenster extends JFrame implements TableModelListener{
 
         //ActionListener Funktional
         BerechneFunktional.addActionListener(arg0 -> berechne(false, table, tableModel));
-        BerechneFunktional.addActionListener(arg0 -> JOptionPane.showMessageDialog(null, "Achtung! Die funktionale F\u00e4rbung ist nur mit einem planaren Graphen m\u00f6glich. Es existiert keine Pr\u00efcung des von Ihnen eingegebenen Grpahen auf planarit\u00e4t. Weitere Informationen: de.wikipedia.org/wiki/Planarer_Graph ", "Achtung", JOptionPane.INFORMATION_MESSAGE));
+        BerechneFunktional.addActionListener(arg0 -> JOptionPane.showMessageDialog(null, "Achtung! Die funktionale F\u00e4rbung ist nur mit einem planaren Graphen m\u00f6glich. Es existiert keine Pr\u00fcfung des von Ihnen eingegebenen Grpahen auf planarit\u00e4t. Weitere Informationen: de.wikipedia.org/wiki/Planarer_Graph ", "Achtung", JOptionPane.INFORMATION_MESSAGE));
         
         pack();
     }

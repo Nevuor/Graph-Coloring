@@ -58,9 +58,10 @@ class Ergebnis extends JFrame {
 		for (int i = 0; i < anzahlKnoten; i++) {
 		    tabelleWest.setValueAt(i, i, 0);
 		}
-		for (int i = 0; i < anzahlKnoten; i++) {
+		for (int i = 0; i < anzahlKnoten +1; i++) {
 		    columnNorth = tabelleNorth.getColumnModel().getColumn(i);
 		    columnNorth.setMaxWidth(45);
+		    columnNorth.setPreferredWidth(45);
 		}
 		for (int i = 0; i < anzahlKnoten; i++) {
 		    tabelleNorth.setValueAt(i, 0, i+1);
@@ -69,7 +70,7 @@ class Ergebnis extends JFrame {
 		
 		columnWest = tabelleWest.getColumnModel().getColumn(0);
 	    columnWest.setMaxWidth(45);
-	    		
+	    columnWest.setPreferredWidth(45);		
 		contentPane.add(ergebnistabelle, BorderLayout.CENTER);
 		contentPane.add(tabelleNorth, BorderLayout.NORTH);
 		contentPane.add(tabelleWest, BorderLayout.WEST);
